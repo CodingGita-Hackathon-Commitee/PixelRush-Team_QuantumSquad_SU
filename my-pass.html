@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Events &amp; Passes - CampusConnect</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ==========================================================================
+   1. GLOBAL RESET & BASE STYLES
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f8f9fd;
+  color: #1e2432;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button, input {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   2. REUSABLE COMPONENTS & BUTTONS
+   ========================================================================== */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.button {
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: 0.2s ease;
+}
+
+.button-primary {
+  background-color: #5433ff;
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  background-color: #4225e6;
+}
+
+.button-outline {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+}
+
+.button-outline:hover {
+  border-color: #5433ff;
+  color: #5433ff;
+}
+
+.button-light {
+  background-color: #f1f5f9;
+  color: #334155;
+}
+
+.button-light:hover {
+  background-color: #e2e8f0;
+}
+
+.button-accent {
+  background-color: #ece8fe;
+  color: #5433ff;
+}
+
+.button-accent:hover {
+  background-color: #ded7fe;
+}
+
+.button-block {
+  width: 100%;
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Badges */
+.badge {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 9px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.badge-purple { background-color: #ece8fe; color: #5433ff; }
+.badge-blue { background-color: #e0f2fe; color: #0284c7; }
+.badge-gray { background-color: #f1f5f9; color: #64748b; }
+.badge-green { background-color: #d1fae5; color: #059669; }
+.badge-disabled { background-color: #f1f5f9; color: #94a3b8; }
+.count-badge { background-color: #e2e8f0; color: #334155; }
+
+/* Text Utilities */
+.text-green { color: #059669; }
+.text-purple { color: #5433ff; }
+
+/* ==========================================================================
+   3. APP DASHBOARD LAYOUT (SIDEBAR + MAIN + WIDGETS)
+   ========================================================================== */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Left Sidebar */
+.sidebar {
+  width: 230px;
+  background-color: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.brand-logo-icon {
+  width: 32px;
+  height: 32px;
+  background-color: #5433ff;
+  color: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1e2432;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  padding: 9px 12px;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+
+.menu-link:hover {
+  background-color: #f8f9fd;
+  color: #5433ff;
+}
+
+.menu-link.active {
+  background-color: #ece8fe;
+  color: #5433ff;
+  font-weight: bold;
+}
+
+.menu-icon {
+  font-size: 15px;
+}
+
+.verified-card {
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.verified-title {
+  font-size: 12px;
+  color: #16a34a;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.verified-text {
+  font-size: 11px;
+  color: #4b5563;
+}
+
+/* ==========================================================================
+   4. MAIN DASHBOARD CONTENT AREA
+   ========================================================================== */
+.main-wrapper {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 340px; /* Main content + Right widget sidebar */
+  gap: 24px;
+  padding: 24px;
+  max-width: 1400px;
+  min-width: 0;
+}
+
+.dashboard-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Page Header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.breadcrumb-tag {
+  font-size: 11px;
+  font-weight: bold;
+  color: #5433ff;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #1e2432;
+  margin-bottom: 4px;
+}
+
+.page-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  max-width: 580px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 15px;
+}
+
+.filter-pills {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.pill-btn {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  padding: 7px 12px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.pill-btn.active,
+.pill-btn:hover {
+  background-color: #5433ff;
+  color: #ffffff;
+  border-color: #5433ff;
+}
+
+.search-box {
+  position: relative;
+}
+
+.filter-search-input {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 7px 15px;
+  font-size: 12px;
+  width: 220px;
+  outline: none;
+}
+
+.filter-search-input:focus {
+  border-color: #5433ff;
+}
+
+/* ==========================================================================
+   5. LIVE PASS HERO CARD
+   ========================================================================== */
+.live-pass-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.live-status-bar {
+  background-color: #3b28cc;
+  color: #ffffff;
+  padding: 10px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.status-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22c55e;
+}
+
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hall-badge {
+  background-color: #5433ff;
+  color: #ffffff;
+}
+
+.pass-body {
+  padding: 22px;
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 20px;
+  align-items: center;
+}
+
+.pass-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.pass-event-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.pass-presenter {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 16px;
+}
+
+.attendee-box {
+  background-color: #f8f9fd;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  gap: 30px;
+  margin-bottom: 16px;
+}
+
+.attendee-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 10px;
+  font-weight: bold;
+  color: #94a3b8;
+}
+
+.info-value {
+  font-size: 13px;
+  color: #1e2432;
+}
+
+.info-sub {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.pass-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* QR Code Section */
+.qr-col {
+  background: linear-gradient(135deg, #eef2ff, #f8f9fd);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.qr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qr-placeholder {
+  width: 120px;
+  height: 120px;
+  background-color: #ffffff;
+  border: 2px dashed #cbd5e1;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #5433ff;
+  margin-bottom: 8px;
+}
+
+.token-code {
+  font-size: 10px;
+  font-weight: bold;
+  color: #64748b;
+  display: block;
+}
+
+.token-desc {
+  font-size: 10px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   6. SECTIONS (UPCOMING & PAST ATTENDANCE)
+   ========================================================================== */
+.content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.view-link {
+  font-size: 12px;
+  color: #5433ff;
+  font-weight: bold;
+}
+
+.verified-status-text {
+  font-size: 12px;
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.schedule-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.schedule-entry-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+}
+
+.date-badge {
+  width: 48px;
+  height: 52px;
+  background-color: #f1f5f9;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.date-month {
+  font-size: 10px;
+  font-weight: bold;
+  color: #64748b;
+}
+
+.date-day {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1e2432;
+}
+
+.entry-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.entry-tags {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.entry-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.entry-meta {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.activity-points-tag {
+  font-size: 11px;
+  font-weight: bold;
+  color: #5433ff;
+}
+
+.entry-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   7. RIGHT SIDEBAR WIDGETS
+   ========================================================================== */
+.dashboard-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.widget-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
+
+.widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.widget-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.term-badge {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Metrics 2x2 Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.metric-box {
+  background-color: #f8f9fd;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.metric-value {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 2px 0;
+}
+
+.metric-sub {
+  font-size: 10px;
+  color: #94a3b8;
+}
+
+/* Tier Progress */
+.tier-progress-card {
+  background-color: #f8f9fd;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tier-title {
+  font-size: 12px;
+  display: block;
+}
+
+.tier-desc {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.circle-progress {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 4px solid #5433ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+  color: #5433ff;
+}
+
+/* Event Review Widget */
+.review-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.review-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-event-name {
+  font-size: 12px;
+}
+
+.review-date {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.star-rating {
+  font-size: 12px;
+  color: #eab308;
+}
+
+.review-quote {
+  font-size: 11px;
+  font-style: italic;
+  color: #475569;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+/* Logistics Widget */
+.logistics-intro {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.logistics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.logistics-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.logistics-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #f1f5f9;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.logistics-info {
+  flex: 1;
+}
+
+.logistics-title {
+  font-size: 12px;
+  display: block;
+}
+
+.logistics-desc {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.emergency-badge {
+  font-size: 9px;
+  font-weight: bold;
+  color: #b91c1c;
+  background-color: #fee2e2;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.floorplan-footer {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+}
+
+.floor-link {
+  color: #5433ff;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   8. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .main-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .pass-body {
+    grid-template-columns: 1fr;
+  }
+
+  .qr-col {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .sidebar-menu {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .verified-card {
+    display: none;
+  }
+
+  .schedule-entry-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .entry-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .attendee-box {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header {
+    flex-direction: column;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .header-actions .button {
+    flex: 1;
+  }
+
+  .pass-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .pass-actions .button {
+    width: 100%;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <div class="dashboard-layout">
+
+    <!-- Left Navigation Sidebar -->
+    <aside class="sidebar" aria-label="Portal Navigation">
+      <div class="sidebar-brand">
+        <span class="brand-logo-icon">&#127891;</span>
+        <span class="brand-name">CampusConnect</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul class="sidebar-menu">
+          <li class="menu-item"><a href="index.html" class="menu-link"><span class="menu-icon">&#8962;</span> Home</a></li>
+          <li class="menu-item"><a href="index.html" class="menu-link"><span class="menu-icon">&#128197;</span> Events &amp; Workshops</a></li>
+          <li class="menu-item"><a href="hackathon-team.html" class="menu-link"><span class="menu-icon">&#128188;</span> Opportunities</a></li>
+          <li class="menu-item"><a href="hackathon-team.html" class="menu-link"><span class="menu-icon">&#128101;</span> Clubs &amp; Societies</a></li>
+          <li class="menu-item"><a href="#my-events" class="menu-link active"><span class="menu-icon">&#127915;</span> My Events &amp; Passes</a></li>
+          <li class="menu-item"><a href="#profile" class="menu-link"><span class="menu-icon">&#128100;</span> Student Profile</a></li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar Status Card -->
+      <div class="verified-card">
+        <strong class="verified-title">&#10003; Student Verified</strong>
+        <p class="verified-text">Fall 2024 Semester Pass active and up to date.</p>
+      </div>
+    </aside>
+
+    <!-- Main Content Container -->
+    <div class="main-wrapper">
+
+      <!-- Main Dashboard Content Column -->
+      <main class="dashboard-main">
+
+        <!-- Header / Page Title Row -->
+        <header class="page-header">
+          <div class="header-titles">
+            <span class="breadcrumb-tag">STUDENT PORTAL &bull; Active Pass Hub</span>
+            <h1 class="page-title">My Events &amp; Passes</h1>
+            <p class="page-subtitle">Manage registered student activities, digital entry barcodes, schedule sync, and attendance records.</p>
+          </div>
+
+          <div class="header-actions">
+            <button type="button" class="button button-outline">&#128197; Sync Calendar (.ics)</button>
+            <button type="button" class="button button-primary">&#128229; Download All Passes</button>
+          </div>
+        </header>
+
+        <!-- Filter Pills Bar & Search -->
+        <div class="filter-bar">
+          <div class="filter-pills">
+            <button type="button" class="pill-btn active">All Passes (4)</button>
+            <button type="button" class="pill-btn">Upcoming (2)</button>
+            <button type="button" class="pill-btn">Ready for Check-in (1)</button>
+            <button type="button" class="pill-btn">Attended &amp; Verified (2)</button>
+          </div>
+
+          <div class="search-box">
+            <input type="search" placeholder="Filter by title, hall, date..." class="filter-search-input">
+          </div>
+        </div>
+
+        <!-- Hero Feature Card: Live Gate Access Pass -->
+        <article class="card live-pass-card">
+          <!-- Top Access Bar -->
+          <div class="live-status-bar">
+            <div class="status-left">
+              <span class="status-dot"></span>
+              <strong>LIVE GATE ACCESS OPEN</strong>
+            </div>
+            <div class="status-right">
+              <span>&#9201; Starts in 42 minutes</span>
+              <span class="badge hall-badge">Entrance Hall 4B</span>
+            </div>
+          </div>
+
+          <div class="pass-body">
+            <!-- Pass Details Column -->
+            <div class="pass-info-col">
+              <div class="pass-tags">
+                <span class="badge badge-purple">Campus Hackathon</span>
+                <span class="badge badge-blue">&#129681; Seat: Pod 14-B</span>
+                <span class="badge badge-gray">Pending Check-in</span>
+              </div>
+
+              <h2 class="pass-event-title">Collegiate Hackathon 2026</h2>
+              <p class="pass-presenter">Presented by Engineering Council &amp; Campus Tech League</p>
+
+              <!-- Attendee Grid -->
+              <div class="attendee-box">
+                <div class="attendee-col">
+                  <span class="info-label">ATTENDEE</span>
+                  <strong class="info-value">Maya Chen</strong>
+                  <span class="info-sub">ID #CC-2024-8841</span>
+                </div>
+                <div class="attendee-col">
+                  <span class="info-label">GATE WINDOW</span>
+                  <strong class="info-value">8:30 AM - 9:45 AM</strong>
+                  <span class="info-sub">&#128246; Guest: "Campus-Eng"</span>
+                </div>
+              </div>
+
+              <!-- Pass Buttons -->
+              <div class="pass-actions">
+                <button type="button" class="button button-primary">&#128101; Self Check-in Now</button>
+                <button type="button" class="button button-outline">&#128241; Apple / Google Wallet</button>
+                <button type="button" class="button icon-btn" aria-label="Share Pass">&#128279;</button>
+              </div>
+            </div>
+
+            <!-- QR Code Card Column -->
+            <div class="qr-col">
+              <div class="qr-box">
+                <div class="qr-placeholder">
+                  <span class="qr-scan-icon">&#9635; &#10003; &#9635;</span>
+                </div>
+                <span class="token-code">TOKEN: CC-REG-2026-9482</span>
+                <p class="token-desc">Present this code at Gate Scanner Turnstile</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Section: Upcoming Schedule -->
+        <section class="content-section">
+          <div class="section-header-row">
+            <div class="section-title-group">
+              <h2 class="section-title">Upcoming Schedule</h2>
+              <span class="badge count-badge">2 Active</span>
+            </div>
+            <a href="http://127.0.0.1:5500/campus%20calendar/calendar.html" class="view-link">View Full Term Calendar &rarr;</a>
+          </div>
+
+          <div class="schedule-items-list">
+
+            <!-- Item 1 -->
+            <div class="card schedule-entry-card">
+              <div class="date-badge">
+                <span class="date-month">OCT</span>
+                <strong class="date-day">12</strong>
+              </div>
+
+              <div class="entry-details">
+                <div class="entry-tags">
+                  <span class="badge badge-purple">Technology</span>
+                  <span class="badge badge-green">&#10003; Confirmed</span>
+                </div>
+                <h3 class="entry-title">Collegiate Hackathon 2026</h3>
+                <p class="entry-meta">&#128197; Oct 12–13 &bull; 9:00 AM Start &nbsp;&bull;&nbsp; &#128205; Main Technology Auditorium</p>
+              </div>
+
+              <div class="entry-actions">
+                <a href="hackathon-team.html" class="button button-light">Details</a>
+                <button type="button" class="button button-primary">Fast Check-in</button>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="card schedule-entry-card">
+              <div class="date-badge">
+                <span class="date-month">OCT</span>
+                <strong class="date-day">15</strong>
+              </div>
+
+              <div class="entry-details">
+                <div class="entry-tags">
+                  <span class="badge badge-purple">Workshop</span>
+                  <span class="badge badge-gray">Seat Reserved</span>
+                </div>
+                <h3 class="entry-title">Hands-on AI Agent 
+    
+                </h3>
+                <p class="entry-meta">&#128197; Wednesday &bull; 2:00 PM - 5:30 PM &nbsp;&bull;&nbsp; &#128205; Innovation Hall 304 (Lab C)</p>
+              </div>
+
+              <div class="entry-actions">
+                <a href="http://127.0.0.1:5500/design-thinking.html" class="button button-light">Details</a>
+                <span class="badge badge-disabled">&#128274; Pass unlocks Oct 15</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Section: Past Attendance & Credentials -->
+        <section class="content-section">
+          <div class="section-header-row">
+            <div class="section-title-group">
+              <h2 class="section-title">Past Attendance &amp; Credentials</h2>
+              <span class="badge count-badge">2 Completed</span>
+            </div>
+            <span class="verified-status-text">&#10003; 100% Verified Attendance</span>
+          </div>
+
+          <div class="card schedule-entry-card">
+            <div class="date-badge">
+              <span class="date-month">SEP</span>
+              <strong class="date-day">28</strong>
+            </div>
+
+            <div class="entry-details">
+              <div class="entry-tags">
+                <span class="badge badge-blue">Campus Life</span>
+                <span class="badge badge-green">&#10003; Verified Attendance</span>
+                <span class="activity-points-tag">+30 Activity Pts</span>
+              </div>
+              <h3 class="entry-title">Campus Cultural Showcase 2025</h3>
+              <p class="entry-meta">&#128205; Quad Amphitheater &nbsp;&bull;&nbsp; &#128340; Gate Scanned: 6:14 PM</p>
+            </div>
+
+            <div class="entry-actions">
+              <button type="button" class="button button-accent">&#127891; Download Certificate</button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Right Sidebar Widgets Column -->
+      <aside class="dashboard-sidebar" aria-label="Student Engagement and Logistics">
+
+        <!-- Widget 1: Semester Engagement -->
+        <div class="card widget-card">
+          <div class="widget-header">
+            <h3 class="widget-title">&#10024; Semester Engagement</h3>
+            <span class="term-badge">Fall 2026</span>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric-box">
+              <span class="metric-label">Registrations</span>
+              <strong class="metric-value">4</strong>
+              <span class="metric-sub">2 remaining</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Completed</span>
+              <strong class="metric-value">2</strong>
+              <span class="metric-sub text-green">100% Show rate</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Activity Points</span>
+              <strong class="metric-value">120</strong>
+              <span class="metric-sub text-purple">Silver Tier</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Pass Validity</span>
+              <strong class="metric-value text-green">Active</strong>
+              <span class="metric-sub text-green">Clean Record</span>
+            </div>
+          </div>
+
+          <!-- Circular Tier Progress Box -->
+          <div class="tier-progress-card">
+            <div class="tier-text-info">
+              <strong class="tier-title">Campus Activity Tier</strong>
+              <p class="tier-desc">30 pts to Gold Scholar</p>
+            </div>
+            <div class="circle-progress">80%</div>
+          </div>
+        </div>
+
+        <!-- Widget 2: Event Review -->
+        <div class="card widget-card">
+          <div class="widget-header">
+            <h3 class="widget-title">&#128172; Event Review</h3>
+            <span class="badge badge-green">Submitted</span>
+          </div>
+
+          <div class="review-body">
+            <div class="review-top-row">
+              <strong class="review-event-name">Campus Cultural Showcase 2025</strong>
+              <span class="review-date">Sep 28</span>
+            </div>
+            <p class="star-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <strong>5.0 / 5.0</strong></p>
+            <blockquote class="review-quote">
+              "Great acoustic live set and delicious local food stalls! Would love more seating next time."
+            </blockquote>
+            <button type="button" class="button button-light button-block">&#9998; Update Review</button>
+          </div>
+        </div>
+
+        <!-- Widget 3: Day-of Logistics -->
+        <div class="card widget-card">
+          <div class="widget-header">
+            <h3 class="widget-title">&#127760; Day-of Logistics</h3>
+          </div>
+          <p class="logistics-intro">Attending the Hackathon today? Fast-response stations are deployed around Technology Hall 4B.</p>
+
+          <ul class="logistics-list">
+            <li class="logistics-item">
+              <div class="logistics-icon">&#128222;</div>
+              <div class="logistics-info">
+                <strong class="logistics-title">Hall 4B Info Desk</strong>
+                <p class="logistics-desc">Hardware checkout &amp; badge reprint</p>
+              </div>
+            </li>
+            <li class="logistics-item">
+              <div class="logistics-icon">&#128172;</div>
+              <div class="logistics-info">
+                <strong class="logistics-title">Volunteer Liaison</strong>
+                <p class="logistics-desc">Dietary, pod seating, accessibility</p>
+              </div>
+            </li>
+            <li class="logistics-item">
+              <div class="logistics-icon">&#128737;</div>
+              <div class="logistics-info">
+                <strong class="logistics-title">Campus Security</strong>
+                <p class="logistics-desc">24/7 Rapid Response Desk</p>
+              </div>
+              <span class="emergency-badge">Emergency Desk</span>
+            </li>
+          </ul>
+
+          <div class="floorplan-footer">
+            <span class="floor-level">Building Floorplan: <strong>Level 2</strong></span>
+            <a href="#map" class="floor-link">View Floor Map &#128506;</a>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
