@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>/* ==========================================================================
+   1. GLOBAL RESET & BASE STYLES
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f8f9fd;
+  color: #1e2432;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+address {
+  font-style: normal;
+}
+
+.visually-hidden {
+  display: none;
+}
+
+/* ==========================================================================
+   2. REUSABLE CARDS & BUTTONS
+   ========================================================================== */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.button {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+
+.button-primary {
+  background-color: #5433ff;
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  background-color: #4225e6;
+}
+
+.button-secondary {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+}
+
+.button-secondary:hover {
+  border-color: #5433ff;
+  color: #5433ff;
+}
+
+.button-block {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.category-badge {
+  background-color: #ece8fe;
+  color: #5433ff;
+}
+
+.venue-badge {
+  background-color: #f1f5f9;
+  color: #64748b;
+}
+
+/* ==========================================================================
+   3. SITE HEADER & NAVIGATION
+   ========================================================================== */
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #5433ff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #5433ff;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  min-width: 160px;
+  padding: 6px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 8px 15px;
+  font-size: 13px;
+  color: #334155;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fd;
+  color: #5433ff;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-form {
+  position: relative;
+}
+
+.search-input {
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 8px 30px 8px 14px;
+  font-size: 13px;
+  width: 200px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #5433ff;
+  background-color: #ffffff;
+}
+
+.search-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  color: #64748b;
+}
+
+.icon-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.icon-button:hover {
+  background-color: #e2e8f0;
+}
+
+.breadcrumb-container {
+  max-width: 1240px;
+  margin: 15px auto 5px;
+  padding: 0 20px;
+}
+
+.back-link {
+  color: #5433ff;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   4. MAIN TWO-COLUMN LAYOUT
+   ========================================================================== */
+.main-content {
+  padding-bottom: 40px;
+}
+
+.content-wrapper {
+  max-width: 1240px;
+  margin: 10px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  align-items: start;
+}
+
+.primary-column {
+  min-width: 0; /* Prevents overflow */
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ==========================================================================
+   5. HERO EVENT CARD
+   ========================================================================== */
+.hero-card {
+  display: flex;
+  gap: 20px;
+}
+
+.hero-figure {
+  width: 210px;
+  height: 210px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.tag-badges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.hero-title {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.hero-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.event-meta-grid {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 14px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.meta-icon {
+  font-size: 18px;
+}
+
+.meta-primary {
+  font-size: 13px;
+  display: block;
+}
+
+.meta-secondary {
+  font-size: 12px;
+  color: #64748b;
+  display: block;
+}
+
+.hero-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.free-tag {
+  font-size: 22px;
+  color: #10b981;
+}
+
+.participant-count {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.seats-progress-container {
+  text-align: right;
+}
+
+.seats-progress-label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  color: #10b981;
+  margin-bottom: 4px;
+}
+
+progress {
+  width: 140px;
+  height: 8px;
+}
+
+.hero-cta-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+/* ==========================================================================
+   6. TABS & ABOUT
+   ========================================================================== */
+.tabs-nav {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.tabs-list {
+  display: flex;
+  gap: 25px;
+}
+
+.tab-link {
+  display: block;
+  padding: 10px 0;
+  font-weight: bold;
+  font-size: 14px;
+  color: #64748b;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-link.active,
+.tab-link:hover {
+  color: #5433ff;
+  border-bottom-color: #5433ff;
+}
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.section-title {
+  font-size: 17px;
+}
+
+.paragraph {
+  font-size: 14px;
+  color: #475569;
+}
+
+/* ==========================================================================
+   7. SPEAKERS & WHY ATTEND
+   ========================================================================== */
+.columns-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.speakers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.speaker-card {
+  text-align: center;
+  padding: 15px 10px;
+}
+
+.speaker-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 8px;
+}
+
+.speaker-name {
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.speaker-organization {
+  font-size: 12px;
+  color: #5433ff;
+  font-weight: bold;
+}
+
+.speaker-role {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.benefits-list {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.benefit-icon {
+  width: 32px;
+  height: 32px;
+  background-color: #f1f5f9;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   8. SCHEDULE, VENUE, ORGANIZER
+   ========================================================================== */
+.cards-triplet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.info-card {
+  padding: 16px;
+}
+
+.card-title {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-left: 2px solid #ece8fe;
+  padding-left: 12px;
+}
+
+.timeline-time {
+  font-size: 12px;
+  color: #5433ff;
+  display: block;
+}
+
+.timeline-description {
+  font-size: 12px;
+}
+
+.venue-address {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.venue-name {
+  display: block;
+}
+
+.map-figure {
+  width: 100%;
+  height: 90px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.map-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.venue-map-link {
+  font-size: 12px;
+  color: #5433ff;
+  font-weight: bold;
+}
+
+.organizer-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.organizer-logo-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background-color: #1e293b;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.organizer-title {
+  font-size: 13px;
+}
+
+.organizer-subtitle {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.organizer-description {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+.social-links-group {
+  display: flex;
+  gap: 8px;
+}
+
+.social-link {
+  width: 30px;
+  height: 30px;
+  background-color: #f1f5f9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+/* ==========================================================================
+   9. RIGHT BOOKING SIDEBAR
+   ========================================================================== */
+.booking-sidebar {
+  width: 100%;
+  min-width: 0;
+}
+
+.booking-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sidebar-heading {
+  font-size: 12px;
+  color: #64748b;
+  display: block;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.currency-amount {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.price-frequency {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.availability-callout {
+  background-color: #f1f5f9;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12px;
+}
+
+.availability-status-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.booked-percentage {
+  color: #5433ff;
+}
+
+.capacity-progress {
+  width: 100%;
+  height: 6px;
+  margin-top: 6px;
+}
+
+.alert-banner {
+  background-color: #ef4444;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.alert-title {
+  font-size: 16px;
+  display: block;
+}
+
+.alert-message {
+  font-size: 12px;
+  color: #fee2e2;
+}
+
+.selection-heading-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selection-title {
+  font-size: 13px;
+}
+
+.selection-badge {
+  font-size: 12px;
+  font-weight: bold;
+  color: #5433ff;
+}
+
+.stage-screen-box {
+  background-color: #ece8fe;
+  text-align: center;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+.stage-text {
+  font-size: 11px;
+  font-weight: bold;
+  color: #5433ff;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   SEATING TABLE
+   ========================================================================== */
+.seating-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 4px;
+}
+
+.seating-table th {
+  font-size: 11px;
+  color: #94a3b8;
+  width: 16px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.seating-table td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 0;
+}
+
+.seat {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  transition: transform 0.15s ease;
+}
+
+.seat-available {
+  background-color: #34d399;
+}
+
+.seat-available:hover {
+  background-color: #10b981;
+  transform: scale(1.15);
+}
+
+.seat-selected {
+  background-color: #5433ff;
+}
+
+.seat-booked {
+  background-color: #e2e8f0;
+  cursor: not-allowed;
+}
+
+.legend-list {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-box {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.legend-available { background-color: #34d399; }
+.legend-booked { background-color: #e2e8f0; }
+.legend-selected { background-color: #5433ff; }
+
+.selected-summary-box {
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 10px;
+  font-size: 13px;
+}
+
+.selected-summary-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.summary-cost strong {
+  color: #1e2432;
+}
+
+.seat-badge {
+  background-color: #5433ff;
+  color: #ffffff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 10px;
+}
+
+.total-label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.total-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #5433ff;
+}
+
+.trust-badge {
+  text-align: center;
+  font-size: 11px;
+  color: #10b981;
+}
+
+/* ==========================================================================
+   10. SITE FOOTER
+   ========================================================================== */
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  padding: 24px 0;
+  margin-top: 20px;
+}
+
+.footer-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-logo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #5433ff;
+}
+
+.footer-copyright {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.footer-links {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.footer-link:hover {
+  color: #5433ff;
+}
+
+/* 11. RESPONSIVE MEDIA QUERIES*/
+
+@media (max-width: 1024px) {
+  .content-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-sidebar {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .cards-triplet-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-wrap: wrap;
+  }
+
+  .navbar {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    padding-top: 6px;
+  }
+
+  .hero-card {
+    flex-direction: column;
+  }
+
+  .hero-figure {
+    width: 100%;
+    height: 180px;
+  }
+
+  .event-meta-grid {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .columns-split {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-triplet-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-input {
+    width: 130px;
+  }
+
+  .hero-title {
+    font-size: 20px;
+  }
+
+  .hero-status-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .hero-cta-buttons {
+    flex-direction: column;
+  }
+
+  .hero-cta-buttons .button {
+    width: 100%;
+  }
+
+  .speakers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .seat {
+    width: 18px;
+    height: 18px;
+  }
+}</style>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Innovators Summit 2026 - CampusHub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-group">
+        <a href="index.html" class="logo">CampusHub</a>
+      </div>
+
+      <nav class="navbar" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item dropdown">
+            <a href="index.html" class="nav-link dropdown-toggle">Events / Explore</a>
+            <ul class="dropdown-menu">
+              <li><a href="#all-events" class="dropdown-item">All Events</a></li>
+              <li><a href="#summits" class="dropdown-item">Tech Summits</a></li>
+              <li><a href="http://127.0.0.1:5500/index4.html" class="dropdown-item">Workshops</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a href="#compare" class="nav-link">Compare</a></li>
+          <li class="nav-item"><a href="my-events.html" class="nav-link">My Bookings</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <form action="#search" method="get" class="search-form" role="search">
+          <label for="campus-search" class="visually-hidden">Search campus events</label>
+          <input type="search" id="campus-search" name="query" placeholder="Search campus events..." class="search-input">
+          <button type="submit" class="search-button" aria-label="Search">&#128269;</button>
+        </form>
+        <button type="button" class="icon-button" aria-label="Notifications">&#128276;</button>
+        <button type="button" class="icon-button" aria-label="User Profile">&#128100;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb Navigation -->
+  <div class="breadcrumb-container">
+    <a href="index.html" class="back-link">&larr; Back to Events</a>
+  </div>
+
+  <!-- Main Content Layout -->
+  <main class="main-content">
+    <div class="content-wrapper">
+
+      <!-- Left Primary Column -->
+      <div class="primary-column">
+
+        <!-- Hero Card -->
+        <article class="card hero-card" id="event-hero">
+          <figure class="hero-figure">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Tech Innovators Summit microchip illustration" class="hero-image">
+          </figure>
+
+          <div class="hero-details">
+            <div class="tag-badges">
+              <span class="badge category-badge">Technology</span>
+              <span class="badge venue-badge">Auditorium Main</span>
+            </div>
+
+            <h1 class="hero-title">Tech Innovators Summit</h1>
+            <p class="hero-subtitle">Build. Innovate. Create.</p>
+
+            <div class="event-meta-grid">
+              <div class="meta-item">
+                <span class="meta-icon">&#128197;</span>
+                <div class="meta-content">
+                  <strong class="meta-primary">08 Oct 2026</strong>
+                  <span class="meta-secondary">10:00 AM - 5:00 PM</span>
+                </div>
+              </div>
+
+              <div class="meta-item">
+                <span class="meta-icon">&#128205;</span>
+                <div class="meta-content">
+                  <strong class="meta-primary">CodingGita Campus</strong>
+                  <span class="meta-secondary">Tech Quad &bull; Main...</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-status-row">
+              <div class="price-container">
+                <strong class="free-tag">Free</strong>
+                <span class="participant-count">(110 participants)</span>
+              </div>
+              <div class="seats-progress-container">
+                <span class="seats-progress-label">158 / 200 seats left (79%)</span>
+                <progress max="200" value="158" class="seats-progress-bar"></progress>
+              </div>
+            </div>
+
+            <div class="hero-cta-buttons">
+              <a href="http://127.0.0.1:5500/ticketprocess.html" type="button" class="button button-primary">Register Now &rarr;</a>
+              <button type="button" class="button button-secondary save-button">&#9825; Save Event</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Tabs Navigation -->
+        <nav class="tabs-nav" aria-label="Event sections">
+          <ul class="tabs-list">
+            <li><a href="#about" class="tab-link active">About</a></li>
+            <li><a href="#speakers" class="tab-link">Speakers</a></li>
+            <li><a href="http://127.0.0.1:5500/campus%20calendar/calendar.html" class="tab-link">Schedule</a></li>
+            <li><a href="#venue" class="tab-link">Venue</a></li>
+            <li><a href="#organizer" class="tab-link">Organizer</a></li>
+          </ul>
+        </nav>
+
+        <!-- About Section -->
+        <section id="about" class="content-section">
+          <h2 class="section-title">&#128196; About the Event</h2>
+          <p class="paragraph">
+            Tech Innovators Summit 2026 is the university's premier annual conference bringing together passionate student builders, seasoned industry researchers, and future-forward startup founders. Immerse yourself in generative AI demos, scalable systems design workshops, and collaborative breakout hack pods.
+          </p>
+          <p class="paragraph">
+            Whether you are testing your first machine learning model, looking to discover co-founders, or eager to get 1:1 guidance from engineering leads at top global tech brands, this summit provides the space and community to transform visionary concepts into live code.
+          </p>
+        </section>
+
+        <!-- Speakers and Why Attend Row -->
+        <div class="columns-split">
+
+          <!-- Speakers Section -->
+          <section id="speakers" class="content-section">
+            <h2 class="section-title">&#127908; Speakers</h2>
+            <div class="speakers-grid">
+              <article class="card speaker-card">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Rohan Mehta" class="speaker-avatar">
+                <h3 class="speaker-name">Rohan Mehta</h3>
+                <p class="speaker-organization">Google</p>
+                <p class="speaker-role">Staff Architect</p>
+              </article>
+
+              <article class="card speaker-card">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" alt="Ananya Sharma" class="speaker-avatar">
+                <h3 class="speaker-name">Ananya Sharma</h3>
+                <p class="speaker-organization">Microsoft</p>
+                <p class="speaker-role">Product Director</p>
+              </article>
+
+              <article class="card speaker-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Vikram Singh" class="speaker-avatar">
+                <h3 class="speaker-name">Vikram Singh</h3>
+                <p class="speaker-organization">Amazon</p>
+                <p class="speaker-role">Principal Engineer</p>
+              </article>
+
+              <article class="card speaker-card">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Sneha Iyer" class="speaker-avatar">
+                <h3 class="speaker-name">Sneha Iyer</h3>
+                <p class="speaker-organization">YouTube</p>
+                <p class="speaker-role">Frontend Lead</p>
+              </article>
+            </div>
+          </section>
+
+          <!-- Why Attend Section -->
+          <section id="why-attend" class="content-section">
+            <h2 class="section-title">&#9881; Why Attend?</h2>
+            <ul class="benefits-list">
+              <li class="benefit-item">
+                <span class="benefit-icon">&#127942;</span>
+                <span class="benefit-text">Win exciting prizes</span>
+              </li>
+              <li class="benefit-item">
+                <span class="benefit-icon">&#128188;</span>
+                <span class="benefit-text">Meet industry professionals</span>
+              </li>
+              <li class="benefit-item">
+                <span class="benefit-icon">&#128187;</span>
+                <span class="benefit-text">Build real projects</span>
+              </li>
+              <li class="benefit-item">
+                <span class="benefit-icon">&#128421;</span>
+                <span class="benefit-text">Network with developers</span>
+              </li>
+              <li class="benefit-item">
+                <span class="benefit-icon">&#127891;</span>
+                <span class="benefit-text">Get participation certificate</span>
+              </li>
+            </ul>
+          </section>
+
+        </div>
+
+        <!-- Schedule, Venue, Organizer Row -->
+        <div class="cards-triplet-grid">
+
+          <!-- Schedule -->
+          <section id="schedule" class="card info-card">
+            <h2 class="card-title">&#128340; Schedule</h2>
+            <ol class="timeline-list">
+              <li class="timeline-item">
+                <strong class="timeline-time">10:00 AM</strong>
+                <span class="timeline-description">Registration &amp; Check-in</span>
+              </li>
+              <li class="timeline-item">
+                <strong class="timeline-time">11:00 AM</strong>
+                <span class="timeline-description">Keynote Address &amp; Launch</span>
+              </li>
+              <li class="timeline-item">
+                <strong class="timeline-time">01:00 PM</strong>
+                <span class="timeline-description">Innovation Demos &amp; Labs</span>
+              </li>
+              <li class="timeline-item">
+                <strong class="timeline-time">03:00 PM</strong>
+                <span class="timeline-description">Mentorship &amp; Peer Reviews</span>
+              </li>
+              <li class="timeline-item">
+                <strong class="timeline-time">05:00 PM</strong>
+                <span class="timeline-description">Closing &amp; Awards Ceremony</span>
+              </li>
+            </ol>
+          </section>
+
+          <!-- Venue -->
+          <section id="venue" class="card info-card">
+            <h2 class="card-title">&#128205; Venue</h2>
+            <address class="venue-address">
+              <strong class="venue-name">CodingGita Campus</strong>
+              <span>Main Auditorium, Tech Quad, Ahmedabad</span>
+            </address>
+            <div class="map-figure">
+              <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=400&q=80" alt="Auditorium Map" class="map-image">
+            </div>
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="venue-map-link">View on Google Maps &#8599;</a>
+          </section>
+
+          <!-- Organizer -->
+          <section id="organizer" class="card info-card">
+            <h2 class="card-title">&#128737; Organizer</h2>
+            <div class="organizer-header">
+              <div class="organizer-logo-box">&lt;/&gt;</div>
+              <div class="organizer-names">
+                <h3 class="organizer-title">CodingGita</h3>
+                <p class="organizer-subtitle">&amp; ACM Chapter</p>
+              </div>
+            </div>
+            <p class="organizer-description">
+              A community-driven collegiate platform for learners, builders, and deep tech innovators.
+            </p>
+            <div class="social-links-group">
+              <a href="#website" class="social-link" aria-label="Website">&#127760;</a>
+              <a href="#share" class="social-link" aria-label="Share">&#128279;</a>
+              <a href="#community" class="social-link" aria-label="Community">&#128101;</a>
+              <a href="#camera" class="social-link" aria-label="Gallery">&#128247;</a>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+
+      <!-- Right Column (Booking Sidebar) -->
+      <aside class="booking-sidebar" aria-label="Ticket and Seat Selection">
+        <div class="card booking-card">
+
+          <!-- Ticket Price Header -->
+          <div class="booking-price-header">
+            <span class="sidebar-heading">Ticket Price</span>
+            <div class="price-row">
+              <span class="currency-amount">&#8377;0</span>
+              <span class="price-frequency">/ per person (Free Pass)</span>
+            </div>
+          </div>
+
+          <!-- Seats Status Box -->
+          <div class="availability-callout">
+            <div class="availability-status-row">
+              <span class="seats-left-badge">&#128101; 158 seats left</span>
+              <span class="booked-percentage">79% Booked</span>
+            </div>
+            <p class="urgency-subtext">Seats are filling fast! Pick your seat now.</p>
+            <progress class="capacity-progress" value="79" max="100"></progress>
+          </div>
+
+          <!-- Hurry Up Alert Banner -->
+          <div class="alert-banner">
+            <strong class="alert-title">HURRY UP!!!</strong>
+            <p class="alert-message">Few seats remaining</p>
+          </div>
+
+          <!-- Seat Selection Header -->
+          <div class="selection-heading-group">
+            <h3 class="selection-title">Interactive Seat Selection</h3>
+            <span class="selection-badge">1 Selected</span>
+          </div>
+
+          <!-- Stage Screen Pill -->
+          <div class="stage-screen-box">
+            <span class="stage-text">STAGE / SCREEN</span>
+          </div>
+
+          <!-- Seating Chart Matrix -->
+          <table class="seating-table" aria-label="Seating arrangement">
+            <tbody>
+              <!-- Row A -->
+              <tr>
+                <th scope="row">A</th>
+                <td><button type="button" class="seat seat-available" aria-label="Seat A1"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat A2"></button></td>
+                <td><button type="button" class="seat seat-selected" aria-label="Seat A3"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat A4"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat A5"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat A6"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat A7"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat A8"></button></td>
+              </tr>
+              <!-- Row B -->
+              <tr>
+                <th scope="row">B</th>
+                <td><button type="button" class="seat seat-available" aria-label="Seat B1"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat B2"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat B3"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat B4"></button></td>
+                <td><button type="button" class="seat seat-booked" disabled aria-label="Seat B5"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat B6"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat B7"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat B8"></button></td>
+              </tr>
+              <!-- Row C -->
+              <tr>
+                <th scope="row">C</th>
+                <td><button type="button" class="seat seat-available" aria-label="Seat C1"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat C2"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat C3"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat C4"></button></td>
+                <td><button type="button" class="seat seat-booked" disabled aria-label="Seat C5"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat C6"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat C7"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat C8"></button></td>
+              </tr>
+              <!-- Row D -->
+              <tr>
+                <th scope="row">D</th>
+                <td><button type="button" class="seat seat-available" aria-label="Seat D1"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat D2"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat D3"></button></td>
+                <td><button type="button" class="seat seat-booked" disabled aria-label="Seat D4"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat D5"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat D6"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat D7"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat D8"></button></td>
+              </tr>
+              <!-- Row E -->
+              <tr>
+                <th scope="row">E</th>
+                <td><button type="button" class="seat seat-available" aria-label="Seat E1"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat E2"></button></td>
+                <td><button type="button" class="seat seat-booked" disabled aria-label="Seat E3"></button></td>
+                <td><button type="button" class="seat seat-booked" disabled aria-label="Seat E4"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat E5"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat E6"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat E7"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat E8"></button></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Legend -->
+          <ul class="legend-list">
+            <li class="legend-item">
+              <span class="legend-box legend-available"></span>
+              <span>Available</span>
+            </li>
+            <li class="legend-item">
+              <span class="legend-box legend-booked"></span>
+              <span>Booked</span>
+            </li>
+            <li class="legend-item">
+              <span class="legend-box legend-selected"></span>
+              <span>Selected</span>
+            </li>
+          </ul>
+
+          <!-- Selected Seat Summary -->
+          <div class="selected-summary-box">
+            <div class="selected-summary-header">
+              <span class="summary-label">Selected Seats</span>
+              <span class="summary-cost">Ticket <strong>&#8377;0</strong></span>
+            </div>
+            <div class="selected-tags-row">
+              <span class="seat-badge">A3</span>
+            </div>
+          </div>
+
+          <!-- Total Row -->
+          <div class="total-row">
+            <span class="total-label">Total</span>
+            <span class="total-price">&#8377;0</span>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="button" class="button button-primary button-block"><a href="http://127.0.0.1:5500/ticketprocess.html">Proceed to Register &rarr;</a></button>
+
+          <!-- Trust Notice -->
+          <p class="trust-badge">&#10003; Instant Confirmation &bull; Student SSO Enabled</p>
+
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand-column">
+        <a href="index.html" class="footer-logo">CampusHub</a>
+        <p class="footer-copyright">&copy; 2026 CampusHub Collegiate Network. All rights reserved.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer links">
+        <ul class="footer-links">
+          <li><a href="#directory" class="footer-link">Campus Directory</a></li>
+          <li><a href="#guidelines" class="footer-link">Student Guidelines</a></li>
+          <li><a href="#calendar" class="footer-link">Academic Calendar</a></li>
+          <li><a href="#support" class="footer-link">Safety &amp; Support</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
+</body>
+</html>
