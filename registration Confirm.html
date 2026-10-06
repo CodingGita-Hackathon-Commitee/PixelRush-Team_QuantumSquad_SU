@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Confirmed - Campus Hub 2025 Summit &amp; Fest</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ==========================================================================
+   1. GLOBAL RESET & BASE STYLES
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f8f9fd;
+  color: #1e2432;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   2. REUSABLE CARDS & BUTTONS
+   ========================================================================== */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+
+.button {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: 0.2s ease;
+}
+
+.button-primary {
+  background-color: #3b28cc;
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  background-color: #2c1eb3;
+}
+
+.button-outline {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+}
+
+.button-outline:hover {
+  border-color: #3b28cc;
+  color: #3b28cc;
+}
+
+/* Badges */
+.badge {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.badge-issued {
+  background-color: #ffedd5;
+  color: #ea580c;
+}
+
+.badge-nfc {
+  background-color: #ede9fe;
+  color: #3b28cc;
+}
+
+.badge-meta {
+  background-color: #f1f5f9;
+  color: #64748b;
+}
+
+.badge-pass-tier {
+  background-color: #f59e0b;
+  color: #ffffff;
+  font-size: 10px;
+}
+
+.badge-track-tech {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.badge-track-design {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.badge-confirmed-seat {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+/* ==========================================================================
+   3. SITE HEADER & STATUS BAR
+   ========================================================================== */
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.header-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 800;
+  color: #3b28cc;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: #3b28cc;
+}
+
+.user-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info-text {
+  text-align: right;
+}
+
+.user-name {
+  font-size: 13px;
+  display: block;
+}
+
+.user-dept {
+  font-size: 11px;
+  color: #64748b;
+  display: block;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Top Status Bar */
+.top-status-bar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 12px 0;
+}
+
+.top-status-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.breadcrumb-trail {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 2px;
+}
+
+.current-crumb {
+  color: #3b28cc;
+  font-weight: bold;
+}
+
+.page-event-title {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.stepper-stages {
+  display: flex;
+  gap: 16px;
+}
+
+.step-check {
+  font-size: 12px;
+  font-weight: bold;
+  color: #3b28cc;
+}
+
+/* ==========================================================================
+   4. HERO SUCCESS BANNER
+   ========================================================================== */
+.main-content {
+  padding: 20px 0 40px;
+}
+
+.content-wrapper {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.success-banner-card {
+  background: linear-gradient(135deg, #fff7ed 0%, #fdf2f8 50%, #f5f3ff 100%);
+  border: 1px solid #fed7aa;
+  padding: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.success-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 300px;
+}
+
+.success-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #3b28cc;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.title-with-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.success-title {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.success-desc {
+  font-size: 12px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.order-id {
+  color: #3b28cc;
+  font-weight: bold;
+}
+
+.success-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   5. TWO-COLUMN LAYOUT (DIGITAL PASS & BREAKOUTS)
+   ========================================================================== */
+.pass-breakouts-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 24px;
+  align-items: start;
+}
+
+.pass-column,
+.breakouts-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.section-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.column-heading {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   6. DIGITAL TICKET PASS CARD
+   ========================================================================== */
+.ticket-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.ticket-header-band {
+  background: linear-gradient(135deg, #3b28cc, #2c1eb3);
+  color: #ffffff;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.ticket-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ticket-icon {
+  font-size: 18px;
+}
+
+.ticket-subtitle {
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: #c7d2fe;
+  display: block;
+}
+
+.ticket-title {
+  font-size: 14px;
+  display: block;
+}
+
+.ticket-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.ticket-id-tag {
+  font-size: 10px;
+  color: #e0e7ff;
+}
+
+.ticket-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Attendee Profile Strip */
+.attendee-profile-strip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background-color: #f8f9fd;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.attendee-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.attendee-name {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.attendee-dept {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.attendee-tags {
+  display: flex;
+  gap: 8px;
+}
+
+.tag-status {
+  font-size: 10px;
+  font-weight: bold;
+  background-color: #ede9fe;
+  color: #3b28cc;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.tag-verified {
+  font-size: 10px;
+  font-weight: bold;
+  background-color: #dbeafe;
+  color: #1e40af;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Ticket Dates & Venue Grid */
+.ticket-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.meta-item {
+  display: flex;
+  gap: 10px;
+}
+
+.meta-icon {
+  font-size: 18px;
+}
+
+.meta-label {
+  font-size: 10px;
+  font-weight: bold;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+  display: block;
+}
+
+.meta-value {
+  font-size: 13px;
+  display: block;
+}
+
+.meta-sub {
+  font-size: 11px;
+  color: #64748b;
+  display: block;
+}
+
+/* Inclusions & Perks */
+.ticket-perks-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.perks-label {
+  font-size: 10px;
+  font-weight: bold;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+.perks-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.perk-pill {
+  font-size: 11px;
+  font-weight: 500;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 4px 10px;
+  color: #334155;
+}
+
+/* Ticket Dashed Cut Line */
+.ticket-divider {
+  border-top: 2px dashed #cbd5e1;
+  position: relative;
+}
+
+/* QR Code Bottom Strip */
+.ticket-qr-strip {
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.qr-code-box {
+  width: 90px;
+  height: 90px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 4px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.qr-instructions {
+  flex: 1;
+}
+
+.qr-kicker {
+  font-size: 9px;
+  font-weight: bold;
+  color: #3b28cc;
+  letter-spacing: 0.5px;
+  display: block;
+}
+
+.qr-heading {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.qr-desc {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.token-copy-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+}
+
+.copy-btn {
+  color: #3b28cc;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+/* ==========================================================================
+   7. RIGHT COLUMN: RESERVED BREAKOUTS
+   ========================================================================== */
+.breakout-card {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.breakout-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.breakout-title {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+.breakout-desc {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.breakout-schedule-box {
+  background-color: #f8f9fd;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 11px;
+}
+
+.schedule-line {
+  color: #334155;
+  margin-bottom: 2px;
+}
+
+.schedule-line:last-child {
+  margin-bottom: 0;
+}
+
+.breakout-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.lead-text {
+  color: #64748b;
+}
+
+.cal-link {
+  color: #3b28cc;
+  font-weight: bold;
+}
+
+/* Adjust Tracks Box */
+.adjust-tracks-box {
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f1f0fd;
+  border-color: #e2e0fb;
+}
+
+.adjust-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.adjust-icon {
+  font-size: 16px;
+  color: #3b28cc;
+}
+
+.adjust-title {
+  font-size: 12px;
+  display: block;
+}
+
+.adjust-desc {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.modify-link {
+  font-size: 11px;
+  font-weight: bold;
+  color: #3b28cc;
+}
+
+/* ==========================================================================
+   8. NEXT STEPS INFO (3 CARDS) & INVITE BANNER
+   ========================================================================== */
+.content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.section-subtitle {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.support-desk-tag {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.info-triplet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.info-box-card {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.icon-purple { background-color: #ede9fe; color: #3b28cc; }
+.icon-yellow { background-color: #fef3c7; color: #b45309; }
+.icon-teal { background-color: #ccfbf1; color: #0f766e; }
+
+.info-box-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.info-box-desc {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.info-box-link {
+  font-size: 12px;
+  font-weight: bold;
+  color: #3b28cc;
+  margin-top: 6px;
+}
+
+/* Invite Friends Card */
+.invite-friends-card {
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.invite-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.invite-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #ede9fe;
+  color: #3b28cc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.invite-title {
+  font-size: 14px;
+  display: block;
+}
+
+.invite-desc {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.invite-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   9. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .pass-breakouts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .breakouts-column {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .info-triplet-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .top-status-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .success-banner-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .success-actions {
+    width: 100%;
+  }
+
+  .success-actions .button {
+    flex: 1;
+  }
+
+  .ticket-meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-qr-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .invite-friends-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .invite-actions {
+    width: 100%;
+  }
+
+  .invite-actions .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .ticket-header-band {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ticket-header-right {
+    align-items: flex-start;
+  }
+
+  .attendee-profile-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-group">
+        <a href="http://127.0.0.1:5500/lavya/homepage.html" class="logo">CampusHub</a>
+      </div>
+
+      <nav class="navbar" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li class="nav-item"><a href="#events" class="nav-link active">Events</a></li>
+          <li class="nav-item"><a href="#communities" class="nav-link">Communities</a></li>
+          <li class="nav-item"><a href="#schedule" class="nav-link">Schedule</a></li>
+          <li class="nav-item"><a href="#help" class="nav-link">Help Center</a></li>
+        </ul>
+      </nav>
+
+      <div class="user-profile-header">
+        <div class="user-info-text">
+          <strong class="user-name">Alex Morgan</strong>
+          <span class="user-dept">Computer Science '26</span>
+        </div>
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Alex Morgan" class="user-avatar">
+      </div>
+    </div>
+  </header>
+
+  <!-- Top Breadcrumb & Stepper Status Bar -->
+  <div class="top-status-bar">
+    <div class="top-status-container">
+      <div class="status-left">
+        <nav class="breadcrumb-trail" aria-label="Breadcrumb">
+          <a href="#summit">Summit Overview</a> &rsaquo;
+          <span class="current-crumb">Step 3: Registration Confirmed</span>
+        </nav>
+        <h1 class="page-event-title">Campus Hub 2025 Summit &amp; Fest</h1>
+      </div>
+
+      <div class="stepper-stages">
+        <span class="step-check">&#10003; Pass Tier</span>
+        <span class="step-check">&#10003; Details &amp; Tracks</span>
+        <span class="step-check active">&#10003; Ticket Confirmed</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Layout -->
+  <main class="main-content">
+    <div class="content-wrapper">
+
+      <!-- Hero Success Banner Card -->
+      <section class="card success-banner-card">
+        <div class="success-left">
+          <div class="success-icon-box">&#10003;</div>
+          <div class="success-text-content">
+            <div class="title-with-badge">
+              <h2 class="success-title">You're In, Alex! &#127881; Registration Confirmed</h2>
+              <span class="badge badge-issued">Official Pass Issued</span>
+            </div>
+            <p class="success-desc">
+              A confirmation email with your digital pass, QR access token, and schedule sync has been sent to <strong>alex.morgan@university.edu</strong>. Order ID: <span class="order-id">#CH-2025-88491</span>.
+            </p>
+          </div>
+        </div>
+
+        <div class="success-actions">
+          <button type="button" class="button button-primary">&#128229; Add to Wallet</button>
+          <button type="button" class="button button-outline">&#128424; Print PDF</button>
+          <button type="button" class="button button-outline">&#128197; Add to Calendar</button>
+        </div>
+      </section>
+
+      <!-- Two-Column Pass & Breakouts Layout -->
+      <div class="pass-breakouts-grid">
+
+        <!-- Left Column: Your Digital Access Pass -->
+        <section class="pass-column">
+          <div class="section-title-row">
+            <h2 class="column-heading">&#127915; Your Digital Access Pass</h2>
+            <span class="badge badge-nfc">FAST-TRACK NFC ENABLED</span>
+          </div>
+
+          <!-- Digital Credential Ticket Card -->
+          <article class="card ticket-card">
+            <!-- Ticket Top Header -->
+            <div class="ticket-header-band">
+              <div class="ticket-header-left">
+                <span class="ticket-icon">&#128737;</span>
+                <div>
+                  <span class="ticket-subtitle">OFFICIAL CREDENTIAL</span>
+                  <strong class="ticket-title">Campus Hub 2025 Summit &amp; Fest</strong>
+                </div>
+              </div>
+
+              <div class="ticket-header-right">
+                <span class="badge badge-pass-tier">STUDENT ALL-ACCESS PASS</span>
+                <span class="ticket-id-tag">ID: CS-2022-8491</span>
+              </div>
+            </div>
+
+            <!-- Ticket Body -->
+            <div class="ticket-body">
+              <!-- Attendee Profile Info -->
+              <div class="attendee-profile-strip">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Alex Morgan" class="attendee-avatar">
+                <div class="attendee-details">
+                  <h3 class="attendee-name">Alex Morgan</h3>
+                  <p class="attendee-dept">Computer Science &amp; Human-Centered Design</p>
+                  <div class="attendee-tags">
+                    <span class="tag-status">Junior Status</span>
+                    <span class="tag-verified">Verified University Email</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Event Dates and Venue Grid -->
+              <div class="ticket-meta-grid">
+                <div class="meta-item">
+                  <span class="meta-icon">&#128197;</span>
+                  <div>
+                    <span class="meta-label">DATES &amp; SCHEDULE</span>
+                    <strong class="meta-value">Oct 24–26, 2025</strong>
+                    <span class="meta-sub">Doors open daily at 8:30 AM</span>
+                  </div>
+                </div>
+
+                <div class="meta-item">
+                  <span class="meta-icon">&#128205;</span>
+                  <div>
+                    <span class="meta-label">MAIN CAMPUS VENUE</span>
+                    <strong class="meta-value">Student Center Main Hall &amp; Quad</strong>
+                    <span class="meta-sub">Central University Boulevard</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Confirmed Perks & Inclusions -->
+              <div class="ticket-perks-box">
+                <span class="perks-label">CONFIRMED PERKS &amp; PACKAGE INCLUSIONS</span>
+                <div class="perks-pills">
+                  <span class="perk-pill">&#127860; Free Daily Catering Pass (Standard)</span>
+                  <span class="perk-pill">&#128085; Summit Hoodie (Unisex M Reserved)</span>
+                  <span class="perk-pill">&#127915; Keynote Priority Seating</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dashed Separation Line -->
+            <div class="ticket-divider"></div>
+
+            <!-- QR Code Verification Strip -->
+            <div class="ticket-qr-strip">
+              <div class="qr-code-box">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=CH-2025-ALEX-MORGAN" alt="Ticket Barcode" class="qr-img">
+              </div>
+
+              <div class="qr-instructions">
+                <span class="qr-kicker">FAST-SCAN INSTRUCTIONS</span>
+                <h4 class="qr-heading">Scan at West Wing Check-in Station</h4>
+                <p class="qr-desc">Present this barcode on mobile or paper at Terminal Station A for instant NFC wristband printing, lanyards, and your official summit kit.</p>
+                <div class="token-copy-row">
+                  <span class="token-text">TOKEN: <strong>9812-AF76-2025</strong></span>
+                  <button type="button" class="copy-btn">&#128203; Copy</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- Right Column: Reserved Breakouts -->
+        <section class="breakouts-column">
+          <div class="section-title-row">
+            <h2 class="column-heading">&#128197; Reserved Breakouts</h2>
+            <span class="badge badge-meta">2 of 2 Tracks Reserved</span>
+          </div>
+
+          <!-- Breakout Card 1: AI & Robotics -->
+          <article class="card breakout-card">
+            <div class="breakout-top-row">
+              <span class="badge badge-track-tech">Technical Track</span>
+              <span class="badge badge-confirmed-seat">Seat #18 Confirmed</span>
+            </div>
+
+            <h3 class="breakout-title">AI &amp; Robotics Lab: Autonomous Systems</h3>
+            <p class="breakout-desc">Hands-on edge-computing &amp; spatial sensor integration for student roboticists.</p>
+
+            <div class="breakout-schedule-box">
+              <p class="schedule-line">&#128340; Friday, Oct 24 &bull; 2:00 PM - 4:00 PM</p>
+              <p class="schedule-line">&#128205; Engineering Hall, Lab Room 302</p>
+            </div>
+
+            <div class="breakout-footer">
+              <span class="lead-text">&#9679; Lead: Prof. Elena Rostova</span>
+              <a href="#cal" class="cal-link">&#128197; Cal Sync</a>
+            </div>
+          </article>
+
+          <!-- Breakout Card 2: Design Systems -->
+          <article class="card breakout-card">
+            <div class="breakout-top-row">
+              <span class="badge badge-track-design">Design Track</span>
+              <span class="badge badge-confirmed-seat">Seat #42 Confirmed</span>
+            </div>
+
+            <h3 class="breakout-title">Design Systems Masterclass: Scale &amp; Motion</h3>
+            <p class="breakout-desc">Architecting accessible component tokens and fluid typography for multi-platform products.</p>
+
+            <div class="breakout-schedule-box">
+              <p class="schedule-line">&#128340; Saturday, Oct 25 &bull; 10:30 AM - 12:30 PM</p>
+              <p class="schedule-line">&#128205; Fine Arts Center, Design Studio B</p>
+            </div>
+
+            <div class="breakout-footer">
+              <span class="lead-text">&#9679; Lead: Marcus Vance, Head of UX</span>
+              <a href="#cal" class="cal-link">&#128197; Cal Sync</a>
+            </div>
+          </article>
+
+          <!-- Need to Adjust Tracks Banner -->
+          <div class="card adjust-tracks-box">
+            <div class="adjust-left">
+              <span class="adjust-icon">&#9881;</span>
+              <div>
+                <strong class="adjust-title">Need to adjust tracks?</strong>
+                <p class="adjust-desc">Modifications open until Oct 22, 11:59 PM</p>
+              </div>
+            </div>
+            <a href="#modify" class="modify-link">Modify Selections</a>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Bottom Section: Next Steps & Essential Summit Info -->
+      <section class="content-section">
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">Next Steps &amp; Essential Summit Info</h2>
+            <p class="section-subtitle">Get ready before setting foot on campus for the weekend.</p>
+          </div>
+          <span class="support-desk-tag">Campus Hub Official Support Desk</span>
+        </div>
+
+        <div class="info-triplet-grid">
+
+          <!-- Card 1: Badge & Swag Pickup -->
+          <article class="card info-box-card">
+            <div class="info-icon-box icon-purple">&#128092;</div>
+            <h3 class="info-box-title">Badge &amp; Swag Pickup</h3>
+            <p class="info-box-desc">
+              Pick up your physical lanyard, summit pass, and reserved size Unisex M hoodie at Student Union Desk A starting Thursday, Oct 23 from 10:00 AM to 6:00 PM.
+            </p>
+            <a href="#map" class="info-box-link">View Pickup Map &rarr;</a>
+          </article>
+
+          <!-- Card 2: Join Attendee Discord / Slack -->
+          <article class="card info-box-card">
+            <div class="info-icon-box icon-yellow">&#128172;</div>
+            <h3 class="info-box-title">Join Attendee Discord / Slack</h3>
+            <p class="info-box-desc">
+              Connect with 850+ collegiate attendees, industry mentors, and hackathon project teammates before keynote morning. Browse dedicated track channels and ride-share chats.
+            </p>
+            <a href="#workspace" class="info-box-link">Access Student Workspace &#8599;</a>
+          </article>
+
+          <!-- Card 3: Campus Safety & Guidelines -->
+          <article class="card info-box-card">
+            <div class="info-icon-box icon-teal">&#128737;</div>
+            <h3 class="info-box-title">Campus Safety &amp; Guidelines</h3>
+            <p class="info-box-desc">
+              Review code of conduct standards, accessible quad transit routes, medical dispatch contact pins, and automatic eduroam / CampusGuest Wi-Fi credentials.
+            </p>
+            <a href="#handbook" class="info-box-link">Read Attendee Handbook &rarr;</a>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Refer-a-Friend / Invite Banner -->
+      <section class="card invite-friends-card">
+        <div class="invite-left">
+          <div class="invite-icon">&#128279;</div>
+          <div>
+            <strong class="invite-title">Have friends who want to join?</strong>
+            <p class="invite-desc">General student passes are 85% claimed. Invite classmates to your registered breakout tracks.</p>
+          </div>
+        </div>
+
+        <div class="invite-actions">
+          <a href="#dashboard" class="button button-outline">Back to Events Dashboard</a>
+          <button type="button" class="button button-primary">Invite Campus Friends</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>

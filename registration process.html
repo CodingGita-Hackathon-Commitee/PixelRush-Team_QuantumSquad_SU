@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendee Details &amp; Session Tracks - CampusHub</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ==========================================================================
+   1. GLOBAL RESET & BASE STYLES
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f8f9fd;
+  color: #1e2432;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   2. REUSABLE CARDS & BUTTONS
+   ========================================================================== */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.button {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: 0.2s ease;
+}
+
+.button-primary {
+  background-color: #3b28cc;
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  background-color: #2c1eb3;
+}
+
+.button-block {
+  width: 100%;
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+/* Badges */
+.badge {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.badge-tracks { background-color: #ede9fe; color: #3b28cc; }
+.badge-popular { background-color: #ede9fe; color: #3b28cc; font-size: 10px; }
+.badge-studio { background-color: #e0f2fe; color: #0284c7; font-size: 10px; }
+.badge-pool { background-color: #ffedd5; color: #c2410c; font-size: 10px; }
+.badge-fast { background-color: #fee2e2; color: #dc2626; font-size: 10px; }
+.badge-univ { background-color: #fef3c7; color: #b45309; font-size: 10px; }
+.badge-early { background-color: #f1f5f9; color: #64748b; font-size: 10px; }
+.badge-free { background-color: #fef3c7; color: #d97706; font-size: 11px; }
+
+/* Text Utilities */
+.text-orange { color: #ea580c; }
+.text-green { color: #16a34a; }
+.text-red { color: #dc2626; }
+.text-link { color: #3b28cc; text-decoration: underline; }
+
+/* ==========================================================================
+   3. SITE HEADER & BREADCRUMB
+   ========================================================================== */
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.header-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 800;
+  color: #3b28cc;
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+
+.nav-link {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #3b28cc;
+}
+
+.header-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-search-input {
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  width: 180px;
+  outline: none;
+}
+
+.user-avatar-wrap {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.online-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #22c55e;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+}
+
+.breadcrumb-container {
+  max-width: 1240px;
+  margin: 14px auto 4px;
+  padding: 0 20px;
+}
+
+.breadcrumb {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.breadcrumb-back {
+  color: #3b28cc;
+  font-weight: 500;
+}
+
+.breadcrumb-current {
+  color: #3b28cc;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   4. TWO-COLUMN LAYOUT
+   ========================================================================== */
+.main-content {
+  padding-bottom: 40px;
+}
+
+.content-wrapper {
+  max-width: 1240px;
+  margin: 10px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 20px;
+  align-items: start;
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* ==========================================================================
+   5. STEPPER PROGRESS CARD
+   ========================================================================== */
+.progress-card {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.progress-labels-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-step-tag {
+  font-size: 11px;
+  font-weight: bold;
+  color: #3b28cc;
+}
+
+.progress-step-title {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 4px;
+  background-color: #e2e8f0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  width: 66%;
+  height: 100%;
+  background-color: #3b28cc;
+}
+
+.stepper-stages-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.step-stage.completed {
+  color: #3b28cc;
+  font-weight: bold;
+}
+
+.step-stage.active {
+  color: #3b28cc;
+  font-weight: bold;
+}
+
+.step-stage.upcoming {
+  color: #94a3b8;
+}
+
+/* ==========================================================================
+   6. CHECKOUT FORM SECTIONS
+   ========================================================================== */
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-section-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.section-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-title-wrap.between {
+  justify-content: space-between;
+}
+
+.title-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: #ede9fe;
+  color: #3b28cc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.section-heading {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.section-subtext {
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* Form Fields */
+.form-fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.field-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #1e2432;
+}
+
+.required {
+  color: #dc2626;
+}
+
+.tag-sso {
+  font-size: 11px;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.tag-verified {
+  font-size: 11px;
+  color: #d97706;
+  font-weight: bold;
+}
+
+.input-icon-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.verified-icon {
+  position: absolute;
+  right: 12px;
+  font-size: 12px;
+  color: #3b28cc;
+  font-weight: bold;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  background-color: #f1f0fd;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 9px 12px 9px 34px;
+  font-size: 12px;
+  color: #1e2432;
+  outline: none;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #3b28cc;
+  background-color: #ffffff;
+}
+
+.readonly-input {
+  background-color: #f1f0fd;
+  color: #334155;
+}
+
+/* Academic Standing Segmented Pills */
+.segmented-pills-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.segment-pill {
+  padding: 8px 4px;
+  background-color: #f1f0fd;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #475569;
+  text-align: center;
+}
+
+.segment-pill.active {
+  background-color: #3b28cc;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   7. BREAKOUT TRACKS & LABS (2x2 GRID)
+   ========================================================================== */
+.tracks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.track-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: 0.2s ease;
+}
+
+.track-card.selected {
+  border-color: #3b28cc;
+  background-color: #fcfbfe;
+}
+
+.track-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.track-checkbox {
+  accent-color: #3b28cc;
+  cursor: pointer;
+}
+
+.track-title {
+  font-size: 12px;
+  flex: 1;
+}
+
+.track-desc {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.track-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  margin-top: auto;
+}
+
+/* ==========================================================================
+   8. MEALS, SWAG & ACCORDION
+   ========================================================================== */
+.dietary-pills-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.dietary-pill {
+  padding: 8px 6px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.dietary-pill.active {
+  background-color: #ede9fe;
+  border-color: #3b28cc;
+  color: #3b28cc;
+}
+
+.diet-radio {
+  display: none;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.accommodations-toggle-box {
+  background-color: #f1f0fd;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 38px;
+}
+
+.acc-label {
+  font-size: 12px;
+  color: #3b28cc;
+  font-weight: 500;
+}
+
+/* Toggle Switch */
+.switch-toggle {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+}
+
+.switch-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #cbd5e1;
+  border-radius: 20px;
+  transition: 0.2s;
+}
+
+.toggle-slider::before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+input:checked + .toggle-slider {
+  background-color: #3b28cc;
+}
+
+input:checked + .toggle-slider::before {
+  transform: translateX(16px);
+}
+
+/* Accordion Card */
+.accordion-card {
+  padding: 16px 20px;
+}
+
+.accordion-summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.accordion-summary::-webkit-details-marker {
+  display: none;
+}
+
+.emergency-fields {
+  margin-top: 14px;
+}
+
+/* ==========================================================================
+   9. RIGHT COLUMN: ORDER SUMMARY
+   ========================================================================== */
+.summary-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.summary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.event-summary-top {
+  display: flex;
+  gap: 12px;
+}
+
+.event-thumb-wrap {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.event-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb-badge {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-color: #3b28cc;
+  color: #ffffff;
+  font-size: 8px;
+  font-weight: bold;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.event-summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.summary-badges-row {
+  display: flex;
+  gap: 6px;
+}
+
+.event-summary-title {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+.event-meta-summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 11px;
+  color: #64748b;
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+  padding: 10px 0;
+}
+
+.price-breakdown-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.price-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.strike {
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
+.total-due-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 12px;
+}
+
+.total-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.total-heading {
+  font-size: 15px;
+}
+
+.total-amount {
+  font-size: 24px;
+  font-weight: 800;
+  color: #3b28cc;
+}
+
+.agreements-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.agreement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 11px;
+  color: #475569;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.agreement-checkbox {
+  accent-color: #3b28cc;
+  margin-top: 2px;
+}
+
+.submit-order-btn {
+  padding: 12px;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.ssl-notice {
+  text-align: center;
+  font-size: 10px;
+  color: #64748b;
+}
+
+/* Group Registration Box */
+.group-reg-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background-color: #f1f0fd;
+  border-color: #e2e0fb;
+  padding: 14px;
+}
+
+.group-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #3b28cc;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.group-title {
+  font-size: 12px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.group-desc {
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* ==========================================================================
+   10. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .content-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-column {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .form-fields-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tracks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dietary-pills-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .stepper-stages-row {
+    font-size: 10px;
+  }
+
+  .segmented-pills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header-search-input {
+    display: none;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-group">
+        <a href="http://127.0.0.1:5500/lavya/homepage.html" class="logo">CampusHub</a>
+      </div>
+
+      <nav class="navbar" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li class="nav-item"><a href="http://127.0.0.1:5500/lavya/homepage.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#explore" class="nav-link">Explore</a></li>
+          <li class="nav-item"><a href="#calendar" class="nav-link">Calendar</a></li>
+          <li class="nav-item"><a href="#my-events" class="nav-link">My Events</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right-actions">
+        <div class="header-search-box">
+          <input type="search" placeholder="Search campus events..." class="header-search-input">
+        </div>
+        <button type="button" class="icon-btn" aria-label="Notifications">&#128276;</button>
+        <div class="user-avatar-wrap">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" alt="Profile" class="avatar-img">
+          <span class="online-dot"></span>
+        </div>
+        <button type="button" class="button button-primary">+ Create Event</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb Navigation -->
+  <div class="breadcrumb-container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="#summit" class="breadcrumb-back">&larr; Summit Overview</a> /
+      <span class="breadcrumb-current">Step 2: Attendee Details &amp; Session Tracks</span>
+    </nav>
+  </div>
+
+  <!-- Main Content Layout -->
+  <main class="main-content">
+    <div class="content-wrapper">
+
+      <!-- Left Column: Checkout Form Sections -->
+      <div class="form-column">
+
+        <!-- Stepper Progress Bar Card -->
+        <div class="card progress-card">
+          <div class="progress-labels-row">
+            <span class="progress-step-tag">REGISTRATION PROGRESS &bull; STEP 2 OF 3</span>
+            <span class="progress-step-title">Attendee Details &amp; Session Passes</span>
+          </div>
+
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill"></div>
+          </div>
+
+          <div class="stepper-stages-row">
+            <span class="step-stage completed">&#10003; Pass Tier: Student Pass</span>
+            <span class="step-stage active">&#128196; Attendee Details &amp; Tracks</span>
+            <span class="step-stage upcoming">&#9633; Confirmation</span>
+          </div>
+        </div>
+
+        <form action="#confirm" method="post" class="checkout-form">
+
+          <!-- Section 1: Attendee Details -->
+          <fieldset class="card form-section-card">
+            <div class="section-title-wrap">
+              <div class="section-icon">&#128100;</div>
+              <div>
+                <legend class="section-heading">Attendee Details</legend>
+                <p class="section-subtext">Pre-verified with University Single Sign-On (SSO)</p>
+              </div>
+            </div>
+
+            <div class="form-fields-grid">
+              <!-- Full Name (SSO linked) -->
+              <div class="form-group">
+                <div class="field-label-row">
+                  <label for="full-name" class="field-label">Full Name</label>
+                  <span class="tag-sso">SSO Linked</span>
+                </div>
+                <div class="input-icon-box">
+                  <span class="input-icon">&#129683;</span>
+                  <input type="text" id="full-name" name="full_name" value="Alex Morgan" readonly class="form-input readonly-input">
+                </div>
+              </div>
+
+              <!-- University Email -->
+              <div class="form-group">
+                <div class="field-label-row">
+                  <label for="university-email" class="field-label">University Email</label>
+                  <span class="tag-verified">&#10003; Verified</span>
+                </div>
+                <div class="input-icon-box">
+                  <span class="input-icon">&#9993;</span>
+                  <input type="email" id="university-email" name="email" value="alex.morgan@university.edu" readonly class="form-input readonly-input">
+                  <span class="verified-icon">&#10003;</span>
+                </div>
+              </div>
+
+              <!-- Student ID -->
+              <div class="form-group">
+                <label for="student-id" class="field-label">Student ID / Reg No. <span class="required">*</span></label>
+                <div class="input-icon-box">
+                  <span class="input-icon">&#129683;</span>
+                  <input type="text" id="student-id" name="student_id" placeholder="e.g. CS-2022-8491" class="form-input" required>
+                </div>
+              </div>
+
+              <!-- Department / Major -->
+              <div class="form-group">
+                <label for="department-select" class="field-label">Department / Major <span class="required">*</span></label>
+                <div class="input-icon-box">
+                  <span class="input-icon">&#127891;</span>
+                  <select id="department-select" name="department" class="form-select" required>
+                    <option value="cs" selected>Computer Science &amp; Human-Centered Design</option>
+                    <option value="eng">Mechanical &amp; Robotics Engineering</option>
+                    <option value="business">School of Management &amp; Venture Lab</option>
+                    <option value="sciences">Applied Physics &amp; Mathematics</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Academic Standing -->
+            <div class="form-group standing-group">
+              <label class="field-label">Academic Standing <span class="required">*</span></label>
+              <div class="segmented-pills-grid">
+                <button type="button" class="segment-pill">Freshman</button>
+                <button type="button" class="segment-pill">Sophomore</button>
+                <button type="button" class="segment-pill active">Junior</button>
+                <button type="button" class="segment-pill">Senior</button>
+                <button type="button" class="segment-pill">Grad / PhD</button>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Section 2: Breakout Tracks & Labs -->
+          <fieldset class="card form-section-card">
+            <div class="section-title-wrap between">
+              <div class="title-left">
+                <div class="section-icon">&#10055;</div>
+                <div>
+                  <legend class="section-heading">Breakout Tracks &amp; Labs</legend>
+                  <p class="section-subtext">Select one or more curated sessions. Seats are reserved upon ticket confirmation.</p>
+                </div>
+              </div>
+              <span class="badge badge-tracks">4 Tracks Available</span>
+            </div>
+
+            <!-- 2x2 Sessions Grid -->
+            <div class="tracks-grid">
+
+              <!-- Track 1: AI & Robotics Lab (Selected) -->
+              <label class="track-card selected">
+                <div class="track-top">
+                  <input type="checkbox" name="tracks" value="ai-robotics" checked class="track-checkbox">
+                  <strong class="track-title">AI &amp; Robotics Lab</strong>
+                  <span class="badge badge-popular">POPULAR</span>
+                </div>
+                <p class="track-desc">Hands-on edge-computing, sensor fusion, and live quadruped bot demonstrations.</p>
+                <div class="track-footer">
+                  <span class="track-time">&#128340; Fri 2:00 PM</span>
+                  <span class="track-seats text-orange">&#128101; 18 seats left</span>
+                </div>
+              </label>
+
+              <!-- Track 2: Design Systems Masterclass (Selected) -->
+              <label class="track-card selected">
+                <div class="track-top">
+                  <input type="checkbox" name="tracks" value="design-systems" checked class="track-checkbox">
+                  <strong class="track-title">Design Systems Masterclass</strong>
+                  <span class="badge badge-studio">STUDIO</span>
+                </div>
+                <p class="track-desc">Rapid prototyping tokens, motion principles, and critique by industry product leads.</p>
+                <div class="track-footer">
+                  <span class="track-time">&#128340; Sat 10:30 AM</span>
+                  <span class="track-seats text-orange">&#128101; 42 seats left</span>
+                </div>
+              </label>
+
+              <!-- Track 3: Campus Startup Pitch Arena -->
+              <label class="track-card">
+                <div class="track-top">
+                  <input type="checkbox" name="tracks" value="startup-pitch" class="track-checkbox">
+                  <strong class="track-title">Campus Startup Pitch Arena</strong>
+                  <span class="badge badge-pool">$10K POOL</span>
+                </div>
+                <p class="track-desc">Watch 12 student startups pitch to angel investors, with audience live voting.</p>
+                <div class="track-footer">
+                  <span class="track-time">&#128340; Sat 3:00 PM</span>
+                  <span class="track-seats text-green">&#127760; Open Access</span>
+                </div>
+              </label>
+
+              <!-- Track 4: 36-Hour Campus Hackathon -->
+              <label class="track-card">
+                <div class="track-top">
+                  <input type="checkbox" name="tracks" value="hackathon" class="track-checkbox">
+                  <strong class="track-title">36-Hour Campus Hackathon</strong>
+                  <span class="badge badge-fast">FAST FILLING</span>
+                </div>
+                <p class="track-desc">Overnight building sprint with complimentary midnight meals and mentor desk hours.</p>
+                <div class="track-footer">
+                  <span class="track-time">&#128340; All Weekend</span>
+                  <span class="track-seats text-red">&#128101; 9 seats left</span>
+                </div>
+              </label>
+
+            </div>
+          </fieldset>
+
+          <!-- Section 3: Meals, Swag & Accessibility -->
+          <fieldset class="card form-section-card">
+            <div class="section-title-wrap">
+              <div class="section-icon">&#127860;</div>
+              <div>
+                <legend class="section-heading">Meals, Swag &amp; Accessibility</legend>
+                <p class="section-subtext">Personalized preferences included with your summit badge</p>
+              </div>
+            </div>
+
+            <!-- Catering Dietary Choice -->
+            <div class="form-group">
+              <label class="field-label">Catering Dietary Choice</label>
+              <div class="dietary-pills-row">
+                <label class="dietary-pill">
+                  <input type="radio" name="diet" value="vegetarian" class="diet-radio">
+                  <span>&#129367; Vegetarian</span>
+                </label>
+                <label class="dietary-pill">
+                  <input type="radio" name="diet" value="vegan" class="diet-radio">
+                  <span>&#129382; Vegan</span>
+                </label>
+                <label class="dietary-pill">
+                  <input type="radio" name="diet" value="gluten-free" class="diet-radio">
+                  <span>&#127806; Gluten-Free</span>
+                </label>
+                <label class="dietary-pill active">
+                  <input type="radio" name="diet" value="standard" checked class="diet-radio">
+                  <span>&#129385; Standard &#10003;</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Swag & Special Accommodations Row -->
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="swag-select" class="field-label">Summit Swag Hoodie / T-Shirt</label>
+                <div class="input-icon-box">
+                  <span class="input-icon">&#128085;</span>
+                  <select id="swag-select" name="swag_size" class="form-select">
+                    <option value="S">Unisex Small (S)</option>
+                    <option value="M" selected>Unisex Medium (M)</option>
+                    <option value="L">Unisex Large (L)</option>
+                    <option value="XL">Unisex Extra Large (XL)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="field-label">Special Accommodations</label>
+                <div class="accommodations-toggle-box">
+                  <span class="acc-label">&#9855; Special Accommodations</span>
+                  <label class="switch-toggle" aria-label="Toggle special accommodations">
+                    <input type="checkbox" name="special_accommodations">
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Section 4: Emergency Contact (Accordion) -->
+          <details class="card form-section-card accordion-card" open>
+            <summary class="accordion-summary">
+              <div class="section-title-wrap">
+                <div class="section-icon">&#10034;</div>
+                <div>
+                  <strong class="section-heading">Emergency Contact</strong>
+                  <p class="section-subtext">Recommended for multi-day hackathon &amp; evening pass holders.</p>
+                </div>
+              </div>
+            </summary>
+
+            <div class="form-row-2 emergency-fields">
+              <div class="form-group">
+                <label for="emergency-name" class="field-label">Contact Full Name</label>
+                <input type="text" id="emergency-name" name="emergency_name" placeholder="e.g. Jordan Morgan (Parent/Guardian)" class="form-input">
+              </div>
+              <div class="form-group">
+                <label for="emergency-phone" class="field-label">Contact Phone Number</label>
+                <input type="tel" id="emergency-phone" name="emergency_phone" placeholder="+1 (555) 019-2834" class="form-input">
+              </div>
+            </div>
+          </details>
+
+        </form>
+
+      </div>
+
+      <!-- Right Column: Order Summary & Group Registration -->
+      <aside class="summary-column" aria-label="Order Summary">
+
+        <!-- Card: Event Overview & Total Due -->
+        <div class="card summary-card">
+          <div class="event-summary-top">
+            <div class="event-thumb-wrap">
+              <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=140&q=80" alt="Summit Poster" class="event-thumb">
+              <span class="thumb-badge">2025</span>
+            </div>
+
+            <div class="event-summary-details">
+              <div class="summary-badges-row">
+                <span class="badge badge-univ">&#128737; Univ Verified</span>
+                <span class="badge badge-early">Early Bird</span>
+              </div>
+              <h3 class="event-summary-title">Campus Hub 2025 Summit &amp; Fest</h3>
+            </div>
+          </div>
+
+          <ul class="event-meta-summary-list">
+            <li>&#128197; Oct 24–26, 2025 &bull; 3 Full Days</li>
+            <li>&#128205; Student Center Main Hall &amp; Quad</li>
+            <li>&#127915; Student Pass (All Keynotes &amp; Tracks)</li>
+          </ul>
+
+          <div class="price-breakdown-box">
+            <div class="price-line">
+              <span class="price-label">Regular Ticket Value</span>
+              <span class="price-val strike">$49.00</span>
+            </div>
+            <div class="price-line text-green">
+              <span class="price-label">Campus Endowment Grant</span>
+              <span class="price-val">-$49.00</span>
+            </div>
+          </div>
+
+          <div class="total-due-row">
+            <div class="total-left">
+              <strong class="total-heading">Total Due</strong>
+              <span class="badge badge-free">100% Free</span>
+            </div>
+            <strong class="total-amount">$0.00</strong>
+          </div>
+
+          <div class="agreements-box">
+            <label class="agreement-item">
+              <input type="checkbox" checked required class="agreement-checkbox">
+              <span>I acknowledge the <a href="#code" class="text-link">Campus Code of Conduct</a> and agree to uphold community standards.</span>
+            </label>
+            <label class="agreement-item">
+              <input type="checkbox" checked class="agreement-checkbox">
+              <span>Send me SMS flash updates for keynote seating &amp; badges.</span>
+            </label>
+          </div>
+
+          <button type="button" class="button button-primary button-block submit-order-btn">
+            <a href="http://127.0.0.1:5500/ticketconfirm.html">Confirm &amp; Reserve Ticket &rarr;</a>
+          </button>
+
+          <p class="ssl-notice">&#128274; Official Campus Registration &bull; SSL Secure</p>
+        </div>
+
+        <!-- Card: Group Registration Sub-Box -->
+        <div class="card group-reg-card">
+          <div class="group-icon">&#128101;</div>
+          <div class="group-text">
+            <strong class="group-title">Need group registration?</strong>
+            <p class="group-desc">Clubs with 5+ members can contact Student Affairs for reserved block tables.</p>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+</body>
+</html>
