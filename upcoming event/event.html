@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="event.css">
+</head>
+<body>
+     <!-- ================= TOP NAVBAR ================= -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <div class="nav-left">
+        <a href="#" class="brand-logo">
+          <div class="logo-mark">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+              <line x1="4" y1="22" x2="4" y2="15"/>
+            </svg>
+          </div>
+          CampusHub
+        </a>
+
+        <nav class="nav-menu">
+          <a href="#" class="nav-item">Home</a>
+          <a href="#" class="nav-item">Explore</a>
+          <a href="#" class="nav-item">Calendar</a>
+          <a href="#" class="nav-item">My Events</a>
+        </nav>
+      </div>
+
+      <div class="nav-right">
+        <div class="search-box-top">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.3-4.3"/>
+          </svg>
+          <input type="text" placeholder="Search campus events..." />
+        </div>
+
+        <button class="btn-icon-bell" title="Notifications">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+          </svg>
+          <span class="bell-dot"></span>
+        </button>
+
+        <div class="user-profile-btn">
+          <img class="user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Alex Rivera" />
+          <div class="user-text">
+            <div class="user-name">Alex Rivera</div>
+            <div class="user-status"><span class="online-indicator"></span> Online</div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </div>
+
+        <button class="btn-create-header">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Create Event
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ================= BREADCRUMB ================= -->
+    <div class="breadcrumb-row">
+      <a href="#">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Home
+      </a>
+      <span>/</span>
+      <a href="#">Filter Studio</a>
+      <span>/</span>
+      <span class="breadcrumb-current">Upcoming Events</span>
+    </div>
+
+    <!-- ================= HERO HEADER ================= -->
+    <div class="hero-header">
+      <div>
+        <div class="hero-badge">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="6"/>
+          </svg>
+          28 Events Scheduled
+        </div>
+        <h1 class="hero-title">Upcoming Campus Events</h1>
+        <p class="hero-desc">Explore confirmed future hackathons, academic symposia, cultural nights, and athletic tournaments with open RSVPs.</p>
+      </div>
+
+      <div class="sync-status-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        Live University CalSync v4.2
+      </div>
+    </div>
+
+    <!-- ================= 3-WAY STATUS SWITCHER CARDS ================= -->
+    <section class="status-switcher-grid">
+      <!-- 1. Upcoming (Selected) -->
+      <div class="status-tab-card active-tab">
+        <div class="status-tab-top">
+          <div class="status-icon-and-title">
+            <div class="status-tab-icon purple">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="status-heading">Upcoming</h3>
+              <p class="status-sub">Future registered activities</p>
+            </div>
+          </div>
+          <div class="check-badge-active">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+        </div>
+        <div class="status-tab-bottom">
+          <span class="active-label">28 Events Active</span>
+          <span class="secondary-label">Only Selected</span>
+        </div>
+      </div>
+
+      <!-- 2. Live Events -->
+      <div class="status-tab-card">
+        <div class="status-tab-top">
+          <div class="status-icon-and-title">
+            <div class="status-tab-icon peach">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/>
+                <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/>
+                <circle cx="12" cy="12" r="2"/>
+                <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/>
+                <path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="status-heading">Live Events</h3>
+              <p class="status-sub">In-progress on campus</p>
+            </div>
+          </div>
+          <span class="pill-badge-indicator peach">
+            <span style="width: 5px; height: 5px; background: #ea580c; border-radius: 50%;"></span>
+            5 Happening Now
+          </span>
+        </div>
+        <div class="status-tab-bottom">
+          <a href="#" class="action-link-arrow">Switch view →</a>
+        </div>
+      </div>
+
+      <!-- 3. Past & Recaps -->
+      <div class="status-tab-card">
+        <div class="status-tab-top">
+          <div class="status-icon-and-title">
+            <div class="status-tab-icon lavender">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 8v13H3V8"/>
+                <path d="M1 3h22v5H1z"/>
+                <path d="M10 12h4"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="status-heading">Past & Recaps</h3>
+              <p class="status-sub">Archived media & slides</p>
+            </div>
+          </div>
+          <span class="pill-badge-indicator lavender">9 Past & Recaps</span>
+        </div>
+        <div class="status-tab-bottom">
+          <a href="#" class="action-link-arrow">Browse archives →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FILTER CONTROLS BAR ================= -->
+    <div class="filter-panel">
+      <div class="filter-inputs-row">
+        <!-- Search Keyword with Autonomous active -->
+        <div class="input-keyword-wrap">
+          <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.3-4.3"/>
+          </svg>
+          <input type="text" class="input-keyword" id="keywordInput" value="Autonomous" />
+          <button class="input-clear-btn" id="clearKeywordBtn" title="Clear search">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="15" y1="9" x2="9" y2="15"/>
+              <line x1="9" y1="9" x2="15" y2="15"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Date Horizon Dropdown -->
+        <button class="dropdown-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          All Upcoming
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+
+        <!-- Sort Dropdown -->
+        <button class="dropdown-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m3 16 4 4 4-4"/>
+            <path d="M7 20V4"/>
+            <path d="m21 8-4-4-4 4"/>
+            <path d="M17 4v16"/>
+          </svg>
+          Date: Earliest First
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+
+        <!-- View mode toggles -->
+        <div class="view-mode-toggle">
+          <button class="view-mode-btn active" title="Grid View">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="7" height="7" x="3" y="3" rx="1"/>
+              <rect width="7" height="7" x="14" y="3" rx="1"/>
+              <rect width="7" height="7" x="14" y="14" rx="1"/>
+              <rect width="7" height="7" x="3" y="14" rx="1"/>
+            </svg>
+          </button>
+          <button class="view-mode-btn" title="List View">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="8" y1="6" x2="21" y2="6"/>
+              <line x1="8" y1="12" x2="21" y2="12"/>
+              <line x1="8" y1="18" x2="21" y2="18"/>
+              <line x1="3" y1="6" x2="3.01" y2="6"/>
+              <line x1="3" y1="12" x2="3.01" y2="12"/>
+              <line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Department Filter Pills -->
+      <div class="filter-dept-row">
+        <span class="dept-caption">DEPARTMENT:</span>
+        <button class="filter-chip active">All</button>
+        <button class="filter-chip inactive">Engineering & AI</button>
+        <button class="filter-chip inactive">Design & Media</button>
+        <button class="filter-chip inactive">Athletics & Sports</button>
+        <button class="filter-chip inactive">Music & Performing Arts</button>
+        <button class="filter-chip inactive">Business & Finance</button>
+      </div>
+    </div>
+
+    <!-- ================= ACTIVE FILTERS BAR ================= -->
+    <div class="active-filters-bar">
+      <div class="active-filters-left">
+        <span class="active-tag-label">ACTIVE:</span>
+        <div class="active-filter-badge purple">
+          Upcoming (28) <span class="close-x">✕</span>
+        </div>
+        <div class="active-filter-badge translucent">
+          All Departments <span class="close-x">✕</span>
+        </div>
+      </div>
+
+      <div class="active-filters-right">
+        <div class="events-counter-dot">
+          <span class="green-dot-pulse"></span>
+          Showing 28 of 28 Upcoming Events
+        </div>
+        <button class="btn-clear-active">Clear All</button>
+      </div>
+    </div>
+
+    <!-- ================= EVENTS 6-CARD GRID ================= -->
+    <div class="events-grid">
+
+      <!-- CARD 1: Autonomous Agents & LLMs Buildathon -->
+      <article class="event-card">
+        <div class="card-thumb-wrap" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=700&q=80');">
+          <span class="badge-top-left green">Free Student Pass</span>
+          <span class="bottom-overlay-tag-left">CS Society</span>
+          <span class="bottom-overlay-badge-right purple">⚡ Hackathon</span>
+        </div>
+        <div class="event-card-content">
+          <div class="datetime-row">
+            <span>🗓️ 24 Oct 2026</span>
+            <span class="bullet">•</span>
+            <span class="time">10:00 AM - 4:00 PM</span>
+          </div>
+          <h3 class="event-title">Autonomous Agents & LLMs Buildathon</h3>
+          <div class="event-location">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Turing Lab 301, Gates Engineering Hall
+          </div>
+          <div class="status-highlight-box">
+            <span class="box-label">Capacity Status</span>
+            <span class="box-value">85 / 100 Filled</span>
+          </div>
+          <div class="card-footer-actions">
+            <button class="btn-card-action">RSVP Spot →</button>
+            <button class="btn-bookmark" title="Bookmark">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 2: Autumn Symphony Gala -->
+      <article class="event-card">
+        <div class="card-thumb-wrap" style="background-image: url('https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=700&q=80');">
+          <span class="bottom-overlay-tag-left">Music Conservatory</span>
+          <span class="bottom-overlay-badge-right orange">🎵 Concert</span>
+        </div>
+        <div class="event-card-content">
+          <div class="datetime-row">
+            <span>🗓️ 28 Oct 2026</span>
+            <span class="bullet">•</span>
+            <span class="time">7:30 PM - 9:30 PM</span>
+          </div>
+          <h3 class="event-title">Autumn Symphony Gala: Nordic Composers</h3>
+          <div class="event-location">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Concert Auditorium, Fine Arts Wing
+          </div>
+          <div class="status-highlight-box">
+            <span class="box-label">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--emerald)" stroke-width="2">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              Auditorium Capacity
+            </span>
+            <span class="box-value green-pill">320 seats open</span>
+          </div>
+          <div class="card-footer-actions">
+            <button class="btn-card-action">Claim Seat 🎟️</button>
+            <button class="btn-bookmark" title="Bookmark">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 3: UX / Product Portfolio Review -->
+      <article class="event-card">
+        <div class="card-thumb-wrap" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=700&q=80');">
+          <span class="bottom-overlay-tag-left">Design Collective</span>
+          <span class="bottom-overlay-badge-right dark-purple">👁 Critique</span>
+        </div>
+        <div class="event-card-content">
+          <div class="datetime-row">
+            <span>🗓️ 02 Nov 2026</span>
+            <span class="bullet">•</span>
+            <span class="time">2:00 PM - 5:00 PM</span>
+          </div>
+          <h3 class="event-title">UX / Product Portfolio Review with Alumni</h3>
+          <div class="event-location">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Media Studio 4, Design Pavilion
+          </div>
+          <div class="status-highlight-box">
+            <span class="box-label orange-text">⏳ Only 4 spots left</span>
+            <span class="box-value">36 / 40 Registered</span>
+          </div>
+          <div class="card-footer-actions">
+            <button class="btn-card-action light-purple">Join Waitlist ☰</button>
+            <button class="btn-bookmark" title="Bookmark">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 4: Campus Football League -->
+      <article class="event-card">
+        <div class="card-thumb-wrap" style="background-image: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=700&q=80');">
+          <span class="badge-top-left green">Free Admission</span>
+          <span class="bottom-overlay-tag-left">Athletics Dept</span>
+          <span class="bottom-overlay-badge-right dark-purple">⚽ Tournament</span>
+        </div>
+        <div class="event-card-content">
+          <div class="datetime-row">
+            <span>🗓️ 05 Nov 2026</span>
+            <span class="bullet">•</span>
+            <span class="time">4:00 PM Kickoff</span>
+          </div>
+          <h3 class="event-title">Campus Football League – Semi-Finals</h3>
+          <div class="event-location">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            North Stadium, Athletic Complex
+          </div>
+          <div class="status-highlight-box">
+            <span class="box-label">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2">
+                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+              Bleacher Seating
+            </span>
+            <span class="box-value">450 seats open</span>
+          </div>
+          <div class="card-footer-actions">
+            <button class="btn-card-action">Get Pass 🎟️</button>
+            <button class="btn-bookmark" title="Bookmark">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 5: Venture Capital Pitch Day 2026 -->
+      <article class="event-card">
+        <div class="card-thumb-wrap" style="background-image: url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=700&q=80');">
+          <span class="badge-top-left blue-light">Open to All Majors</span>
+          <span class="bottom-overlay-tag-left">Entrepreneurship Club</span>
+          <span class="bottom-overlay-badge-right dark-purple">📈 Pitch</span>
+        </div>
+        <div class="event-card-content">
+          <div class="datetime-row">
+            <span>🗓️ 10 Nov 2026</span>
+            <span class="bullet">•</span>
+            <span class="time">1:00 PM - 6:00 PM</span>
+          </div>
+          <h3 class="event-title">Venture Capital Pitch Day 2026</h3>
+          <div class="event-location">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Business School Amphitheatre
+          </div>
+          <div class="status-highlight-box">
+            <span class="box-label">🎁 Grant Pool</span>
+            <span class="box-value orange-text">$25,000 Seed Prize</span>
+          </div>
+          <div class="card-footer-actions">
+            <button class="btn-card-action">Register Now ✍️</button>
+            <button class="btn-bookmark" title="Bookmark">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 6: Cybersecurity Capture The Flag -->
+      <article class="event-card">
+        <div class="card-thumb-wrap" style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=700&q=80');">
+          <span class="badge-top-left blue">Team Pass</span>
+          <span class="bottom-overlay-tag-left">CyberSec Guild</span>
+          <span class="bottom-overlay-badge-right white-badge">🛡️ Competition</span>
+        </div>
+        <div class="event-card-content">
+          <div class="datetime-row">
+            <span>🗓️ 16 Nov 2026</span>
+            <span class="bullet">•</span>
+            <span class="time">9:00 AM - 9:00 PM (12h)</span>
+          </div>
+          <h3 class="event-title">Cybersecurity Capture The Flag Finals</h3>
+          <div class="event-location">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Cyber Arena Hall B, Science Complex
+          </div>
+          <div class="status-highlight-box">
+            <span class="box-label">👥 Teams Registered</span>
+            <span class="box-value">18 / 24 Squads</span>
+          </div>
+          <div class="card-footer-actions">
+            <button class="btn-card-action">Register Team 👥</button>
+            <button class="btn-bookmark" title="Bookmark">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ================= LOAD MORE SECTION ================= -->
+    <div class="load-more-section">
+      <p class="load-more-info">Showing 6 featured events out of 28 scheduled in upcoming horizon</p>
+      <button class="btn-load-more" id="loadMoreBtn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+        </svg>
+        Load 22 More Events
+      </button>
+    </div>
+  </main>
+
+  <!-- ================= SITE FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="brand-logo">
+            <div class="logo-mark">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                <line x1="4" y1="22" x2="4" y2="15"/>
+              </svg>
+            </div>
+            CampusHub
+          </a>
+          <p>The pulse of university life. Discover organizations, connect with peers, and never miss a campus moment.</p>
+        </div>
+
+        <nav class="footer-links">
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+          <a href="#">Help</a>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+        </nav>
+
+        <div class="footer-socials">
+          <a href="#" class="social-link" title="Discord">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.893.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" title="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" title="Website">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" title="Community">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 CampusHub. All rights reserved.</div>
+        <div>Empowering student communities nationwide.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript -->
+  <script>
+    // Search clear button
+    const clearBtn = document.getElementById('clearKeywordBtn');
+    const keywordInput = document.getElementById('keywordInput');
+    if (clearBtn && keywordInput) {
+      clearBtn.addEventListener('click', () => {
+        keywordInput.value = '';
+        keywordInput.focus();
+      });
+    }
+
+    // Department Filter Chips selection toggle
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.filter-chip').forEach(c => {
+          c.classList.remove('active');
+          c.classList.add('inactive');
+        });
+        chip.classList.add('active');
+        chip.classList.remove('inactive');
+      });
+    });
+
+    // Bookmark toggle button
+    document.querySelectorAll('.btn-bookmark').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const svg = btn.querySelector('svg');
+        if (svg.getAttribute('fill') === 'currentColor') {
+          svg.setAttribute('fill', 'none');
+          btn.style.color = 'var(--slate-500)';
+        } else {
+          svg.setAttribute('fill', 'currentColor');
+          btn.style.color = 'var(--primary)';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

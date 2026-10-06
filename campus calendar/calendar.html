@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="calendar.css">
+</head>
+<body>
+   
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <div class="nav-left">
+        <a href="#" class="brand-logo">
+          <div class="logo-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+              <line x1="4" y1="22" x2="4" y2="15"/>
+            </svg>
+          </div>
+         </a>
+        
+          <div class="brand-text">
+            <span class="brand-title">CampusHub</span>
+            <span class="brand-badge">STUDENT PORTAL</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="nav-center">
+        <div class="search-box">
+          <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.3-4.3"/>
+          </svg>
+          <input type="text" placeholder="Search opportunities, events, c..." />
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <!-- Notification Bell -->
+        <button class="nav-icon-btn" title="Notifications">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+          </svg>
+        </button>
+
+        <!-- Messages Chat Bubble -->
+        <button class="nav-icon-btn" title="Messages">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </button>
+
+        <!-- User Profile Pill -->
+        <div class="user-profile-widget">
+          <div class="user-text">
+            <div class="user-name">Maya Chen</div>
+            <div class="user-role">Computer Science '25</div>
+          </div>
+          <img class="user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Maya Chen" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CONTENT LAYOUT ================= -->
+  <main class="container main-layout">
+    
+    <!-- LEFT / MAIN COLUMN: CALENDAR SUITE -->
+    <div class="calendar-workspace">
+
+      <!-- ================= HEADER SECTION ================= -->
+      <section class="page-header">
+        <div class="page-header-top">
+          <div>
+            <div class="breadcrumbs-sub">
+              <span class="hub-pill">ACADEMIC HUB</span>
+              <span class="dot-separator">•</span>
+              <span class="semester-label">Fall 2026 Semester</span>
+            </div>
+            <h1 class="page-title">Academic & Events Calendar</h1>
+            <p class="page-subtitle">Track class tests, hackathons, assignment deadlines, club events, and holidays.</p>
+          </div>
+
+          <!-- Controls Right: View switchers & Add Event CTA -->
+          <div class="header-action-group">
+            <div class="view-switch-tabs">
+              <button class="view-tab active">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="7" height="7"/>
+                  <rect x="14" y="3" width="7" height="7"/>
+                  <rect x="14" y="14" width="7" height="7"/>
+                  <rect x="3" y="14" width="7" height="7"/>
+                </svg>
+                Month
+              </button>
+              <button class="view-tab">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/>
+                  <line x1="9" y1="4" x2="9" y2="22"/>
+                  <line x1="15" y1="4" x2="15" y2="22"/>
+                </svg>
+                Week
+              </button>
+              <button class="view-tab">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                Day
+              </button>
+              <button class="view-tab">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="8" y1="6" x2="21" y2="6"/>
+                  <line x1="8" y1="12" x2="21" y2="12"/>
+                  <line x1="8" y1="18" x2="21" y2="18"/>
+                  <line x1="3" y1="6" x2="3.01" y2="6"/>
+                  <line x1="3" y1="12" x2="3.01" y2="12"/>
+                  <line x1="3" y1="18" x2="3.01" y2="18"/>
+                </svg>
+                Agenda
+              </button>
+            </div>
+
+            <button class="btn-add-event">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+              Add Event
+            </button>
+
+            <button class="btn-icon-export" title="Export / Share Calendar">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+                <polyline points="16 6 12 2 8 6"/>
+                <line x1="12" y1="2" x2="12" y2="15"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Month Navigation Toolbar -->
+        <div class="calendar-nav-toolbar">
+          <div class="month-nav-left">
+            <button class="btn-today">Today</button>
+            <div class="btn-arrow-group">
+              <button class="btn-arrow-nav" title="Previous Month">‹</button>
+              <button class="btn-arrow-nav" title="Next Month">›</button>
+            </div>
+            <span class="week-span-text">Week 41-45</span>
+          </div>
+
+          <div class="month-selector-title">
+            <span>October 2026</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </div>
+
+          <div class="month-nav-right">
+            <button class="btn-filter-dropdown">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+              </svg>
+              All 14 Categories
+            </button>
+            <button class="btn-filter-options">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="4" y1="21" x2="4" y2="14"/>
+                <line x1="4" y1="10" x2="4" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12" y2="3"/>
+                <line x1="20" y1="21" x2="20" y2="16"/>
+                <line x1="20" y1="12" x2="20" y2="3"/>
+                <line x1="1" y1="14" x2="7" y2="14"/>
+                <line x1="9" y1="8" x2="15" y2="8"/>
+                <line x1="17" y1="16" x2="23" y2="16"/>
+              </svg>
+              Filters
+            </button>
+          </div>
+        </div>
+
+        <!-- ================= EVENT LEGEND & COLOR CODING ================= -->
+        <div class="legend-card">
+          <div class="legend-header">
+            <div class="legend-title-group">
+              <span class="legend-title">EVENT LEGEND & COLOR CODING</span>
+              <span class="legend-instruction">Click to toggle filter</span>
+            </div>
+            <button class="btn-reset-view">Reset View</button>
+          </div>
+
+          <div class="legend-grid">
+            <div class="legend-item"><span class="color-dot dot-blue"></span> Assignment</div>
+            <div class="legend-item"><span class="color-dot dot-pink"></span> Holiday</div>
+            <div class="legend-item"><span class="color-dot dot-red"></span> Exam</div>
+            <div class="legend-item"><span class="color-dot dot-orange"></span> Class test</div>
+
+            <div class="legend-item"><span class="color-dot dot-cyan"></span> Result announcement</div>
+            <div class="legend-item"><span class="color-dot dot-teal"></span> Orientation</div>
+            <div class="legend-item"><span class="color-dot dot-purple"></span> Convocation</div>
+            <div class="legend-item"><span class="color-dot dot-amber"></span> Personal reasons</div>
+
+            <div class="legend-item"><span class="color-dot dot-yellow"></span> Festival celebration</div>
+            <div class="legend-item"><span class="color-dot dot-sky"></span> Hackathon participation</div>
+            <div class="legend-item"><span class="color-dot dot-navy"></span> College events & workshops</div>
+            <div class="legend-item"><span class="color-dot dot-darkred"></span> Sick leave / medical</div>
+
+            <div class="legend-item"><span class="color-dot dot-green"></span> Placement drives</div>
+            <div class="legend-item"><span class="color-dot dot-indigo"></span> Company work (official)</div>
+            <div class="legend-item"><span class="color-dot dot-emerald"></span> Interviews</div>
+            <div class="legend-item"><span class="color-dot dot-gray"></span> Duty leave / Others</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 7-COLUMN MONTH CALENDAR GRID ================= -->
+      <section class="calendar-grid-card">
+        <!-- Day Names Header -->
+        <div class="grid-days-header">
+          <div class="day-name sunday">Sun</div>
+          <div class="day-name">Mon</div>
+          <div class="day-name">Tue</div>
+          <div class="day-name">Wed</div>
+          <div class="day-name">Thu</div>
+          <div class="day-name">Fri</div>
+          <div class="day-name saturday">Sat</div>
+        </div>
+
+        <!-- 5-Week Grid Matrix -->
+        <div class="calendar-matrix">
+
+          <!-- ROW 1 -->
+          <div class="cal-day prev-month"><span class="day-num">27</span></div>
+          <div class="cal-day prev-month"><span class="day-num">28</span></div>
+          <div class="cal-day prev-month"><span class="day-num">29</span></div>
+          <div class="cal-day prev-month"><span class="day-num">30</span></div>
+          
+          <div class="cal-day">
+            <div class="day-header"><span class="day-num">1</span></div>
+            <div class="event-pill-stack">
+              <div class="event-pill teal-pill">
+                <span class="p-dot"></span> Orientation 10am
+              </div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header">
+              <span class="day-num">2</span>
+              <span class="corner-dot orange-dot"></span>
+            </div>
+            <div class="event-pill-stack">
+              <div class="event-pill amber-pill">
+                <span class="p-dot"></span> CS301 Class Test
+              </div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header"><span class="day-num">3</span></div>
+            <div class="event-pill-stack">
+              <div class="event-pill blue-pill">Peer Coding Meet</div>
+            </div>
+          </div>
+
+          <!-- ROW 2 -->
+          <div class="cal-day sunday-cell">
+            <div class="day-header"><span class="day-num">4</span></div>
+            <span class="no-events-text">No events</span>
+          </div>
+
+          <!-- ACTIVE TODAY CELL: OCT 5 -->
+          <div class="cal-day active-today-cell">
+            <div class="day-header">
+              <span class="day-num today-circle">5</span>
+              <span class="today-badge">TODAY</span>
+            </div>
+            <div class="event-pill-stack">
+              <div class="event-pill blue-pill">Hackathon Reg Cl</div>
+              <div class="event-pill indigo-pill">CS402 Project Dr</div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header"><span class="day-num">6</span></div>
+            <span class="no-events-text">No events</span>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header"><span class="day-num">7</span></div>
+            <div class="event-pill-stack">
+              <div class="event-pill purple-pill">
+                <span class="p-dot"></span> Term-1 Results
+              </div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header">
+              <span class="day-num">8</span>
+              <span class="corner-dot green-dot"></span>
+            </div>
+            <div class="event-pill-stack">
+              <div class="event-pill green-pill">Stripe Placement</div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header"><span class="day-num">9</span></div>
+            <div class="event-pill-stack">
+              <div class="event-pill yellow-pill">
+                <span class="p-dot"></span> Club Elections
+              </div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header"><span class="day-num">10</span></div>
+            <span class="no-events-text">Open Labs</span>
+          </div>
+
+          <!-- ROW 3 -->
+          <div class="cal-day sunday-cell">
+            <div class="day-header"><span class="day-num">11</span></div>
+            <span class="no-events-text">No events</span>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header">
+              <span class="day-num">12</span>
+              <span class="corner-dot cyan-dot"></span>
+            </div>
+            <div class="event-pill-stack">
+              <div class="event-pill cyan-pill">Hackathon '26 Da</div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header">
+              <span class="day-num">13</span>
+              <span class="corner-dot cyan-dot"></span>
+            </div>
+            <div class="event-pill-stack">
+              <div class="event-pill cyan-pill">Hackathon Final P</div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header"><span class="day-num">14</span></div>
+            <span class="no-events-text">Rest Day</span>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header">
+              <span class="day-num">15</span>
+              <span class="corner-dot blue-dot"></span>
+            </div>
+            <div class="event-pill-stack">
+              <div class="event-pill blue-pill">AI Agent Worksho</div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header">
+              <span class="day-num">16</span>
+              <span class="corner-dot teal-dot"></span>
+            </div>
+            <div class="event-pill-stack">
+              <div class="event-pill emerald-pill">Google 1:1 Intervie</div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header"><span class="day-num">17</span></div>
+            <span class="no-events-text">Robotics Prep</span>
+          </div>
+
+          <!-- ROW 4 -->
+          <div class="cal-day sunday-cell">
+            <div class="day-header">
+              <span class="day-num">18</span>
+              <span class="corner-dot pink-dot"></span>
+            </div>
+            <div class="event-pill-stack">
+              <div class="event-pill pink-pill">Acoustic Stage Fe</div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header"><span class="day-num">19</span></div>
+            <span class="no-events-text">No events</span>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header"><span class="day-num">20</span></div>
+            <div class="event-pill-stack">
+              <div class="event-pill indigo-pill">Company Site Visi</div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header">
+              <span class="day-num">21</span>
+              <span class="corner-dot orange-dot"></span>
+            </div>
+            <div class="event-pill-stack">
+              <div class="event-pill amber-pill">
+                <span class="p-dot"></span> Figma Sprint Test
+              </div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header"><span class="day-num">22</span></div>
+            <span class="no-events-text">No events</span>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header">
+              <span class="day-num">23</span>
+              <span class="corner-dot purple-dot"></span>
+            </div>
+            <div class="event-pill-stack">
+              <div class="event-pill purple-pill">
+                <span class="p-dot"></span> Convocation Prep
+              </div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header">
+              <span class="day-num">24</span>
+              <span class="corner-dot blue-dot"></span>
+            </div>
+            <div class="event-pill-stack">
+              <div class="event-pill blue-pill">Robotics Bootcamp</div>
+            </div>
+          </div>
+
+          <!-- ROW 5 -->
+          <div class="cal-day sunday-cell">
+            <div class="day-header"><span class="day-num">25</span></div>
+            <span class="no-events-text">Study Break</span>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header"><span class="day-num">26</span></div>
+            <div class="event-pill-stack">
+              <div class="event-pill lavender-pill">Duty Leave Roster</div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header"><span class="day-num">27</span></div>
+            <span class="no-events-text">Revision Hours</span>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header">
+              <span class="day-num">28</span>
+              <span class="corner-dot red-dot"></span>
+            </div>
+            <div class="event-pill-stack">
+              <div class="event-pill red-pill">DBMS Mid-Term E</div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header"><span class="day-num">29</span></div>
+            <span class="no-events-text">No events</span>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header">
+              <span class="day-num">30</span>
+              <span class="corner-dot blue-dot"></span>
+            </div>
+            <div class="event-pill-stack">
+              <div class="event-pill blue-pill">HCI Prototype Due</div>
+            </div>
+          </div>
+
+          <div class="cal-day">
+            <div class="day-header">
+              <span class="day-num">31</span>
+              <span class="corner-dot yellow-dot"></span>
+            </div>
+            <div class="event-pill-stack">
+              <div class="event-pill yellow-pill">Halloween Social</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ================= CALENDAR FOOTER STATS BAR ================= -->
+        <div class="calendar-footer-bar">
+          <div class="calendar-stats-left">
+            <span class="stat-badge-text">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              <strong>18</strong> Total Academic Engagements
+            </span>
+            <span class="stat-badge-text alert-red">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              <strong>2</strong> High-Priority Deadlines
+            </span>
+          </div>
+
+          <div class="sync-status-right">
+            <span>Synchronized with Google & Canvas Calendar</span>
+            <span class="green-sync-dot"></span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ================= RIGHT COLUMN: SIDEBAR DETAILS ================= -->
+    <aside class="sidebar-workspace">
+
+      <!-- CARD 1: ACTIVE SELECTION -->
+      <div class="sidebar-card active-selection-card">
+        <div class="selection-header">
+          <div>
+            <span class="active-badge-sub">ACTIVE SELECTION</span>
+            <h2 class="active-date-h2">Mon, Oct 5</h2>
+          </div>
+          <span class="today-pill-light">Today</span>
+        </div>
+
+        <!-- EVENT 1: Collegiate Hackathon -->
+        <div class="event-detail-item border-cyan">
+          <div class="event-meta-top">
+            <span class="time-tag cyan">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              11:59 PM Deadline
+            </span>
+            <span class="cat-pill cyan">Hackathon</span>
+          </div>
+          <h3 class="event-card-title">Collegiate Hackathon 2026</h3>
+          <p class="event-card-desc">Registration closes tonight. Team roster verification required.</p>
+          <div class="event-action-btns">
+            <button class="btn-primary-sm">Submit Team</button>
+            <button class="btn-subtle-sm">Details</button>
+          </div>
+        </div>
+
+        <!-- EVENT 2: Systems Architecture -->
+        <div class="event-detail-item border-blue">
+          <div class="event-meta-top">
+            <span class="time-tag blue">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              04:00 PM – 05:30 PM
+            </span>
+            <span class="cat-pill blue">Assignment</span>
+          </div>
+          <h3 class="event-card-title">CS402 Systems Architecture</h3>
+          <p class="event-card-desc">Draft submission in Turing Hall Lab 3B.</p>
+          <div class="event-action-btns">
+            <button class="btn-subtle-sm">Upload File</button>
+          </div>
+        </div>
+
+        <!-- EVENT 3: Campus Tennis Club Practice -->
+        <div class="event-detail-item border-amber">
+          <div class="event-meta-top">
+            <span class="time-tag amber">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              06:30 PM
+            </span>
+            <span class="cat-pill amber">Personal</span>
+          </div>
+          <h3 class="event-card-title">Campus Tennis Club Practice</h3>
+          <p class="event-card-desc">East Campus Courts.</p>
+        </div>
+
+        <!-- Add Note Button -->
+        <button class="btn-add-note">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="16"/>
+            <line x1="8" y1="12" x2="16" y2="12"/>
+          </svg>
+          Add Note for Oct 5
+        </button>
+      </div>
+
+      <!-- CARD 2: SEMESTER MILESTONES -->
+      <div class="sidebar-card milestones-card">
+        <div class="milestones-header">
+          <h3 class="milestones-title">Semester Milestones</h3>
+          <button class="milestones-flag-btn" title="View Milestone Flags">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+              <line x1="4" y1="22" x2="4" y2="15"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="milestones-list">
+          <!-- Milestone 1 -->
+          <div class="milestone-item">
+            <div class="milestone-countdown orange">2d</div>
+            <div class="milestone-info">
+              <h4 class="milestone-name">Stripe Campus Drive</h4>
+              <p class="milestone-sub">Thu, Oct 8 • Placement Talk</p>
+            </div>
+          </div>
+
+          <!-- Milestone 2 -->
+          <div class="milestone-item">
+            <div class="milestone-countdown blue">7d</div>
+            <div class="milestone-info">
+              <h4 class="milestone-name">Hackathon Opening Ceremony</h4>
+              <p class="milestone-sub">Mon, Oct 12 • Main Auditorium</p>
+            </div>
+          </div>
+
+          <!-- Milestone 3 -->
+          <div class="milestone-item">
+            <div class="milestone-countdown red">23d</div>
+            <div class="milestone-info">
+              <h4 class="milestone-name">Database Midterm Exam</h4>
+              <p class="milestone-sub">Wed, Oct 28 • Hall 401</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mandatory Attendance Progress Meter -->
+        <div class="attendance-box">
+          <div class="attendance-top-row">
+            <span class="attendance-label">Mandatory Attendance</span>
+            <span class="attendance-pct">89.4%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" style="width: 89.4%;"></div>
+          </div>
+          <p class="attendance-footnote">Minimum 75% required for examination eligibility.</p>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
+
+ 
+
+</body>
+</html>

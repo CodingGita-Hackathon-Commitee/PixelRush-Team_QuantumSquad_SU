@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="campus.css">
+</head>
+<body>
+    <!-- ================= TOP NAVIGATION ================= -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <div class="nav-left">
+        <a href="#" class="brand-logo">
+          <div class="logo-mark">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+              <line x1="4" y1="22" x2="4" y2="15"/>
+            </svg>
+          </div>
+          CampusHub
+        </a>
+
+        <nav class="nav-menu">
+          <a href="#" class="nav-item">Home</a>
+          <a href="#" class="nav-item active">Explore</a>
+          <a href="#" class="nav-item">Calendar</a>
+          <a href="#" class="nav-item">My Events</a>
+        </nav>
+      </div>
+
+      <div class="nav-right">
+        <div class="search-box-top">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.3-4.3"/>
+          </svg>
+          <input type="text" placeholder="Search campus events..." />
+        </div>
+
+        <button class="btn-icon-bell" title="Notifications">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+          </svg>
+          <span class="bell-dot"></span>
+        </button>
+
+        <div class="user-profile-btn">
+          <img class="user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Alex Rivera" />
+          <div class="user-text">
+            <div class="user-name">Alex Rivera</div>
+            <div class="user-status"><span class="online-indicator"></span> Online</div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </div>
+
+        <button class="btn-create-header">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Create Event
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ================= BREADCRUMB ================= -->
+    <div class="breadcrumb-row">
+      <a href="#">Home</a>
+      <span></span>
+      <a href="#">Filter Studio</a>
+      <span></span>
+      <span class="breadcrumb-current">Live Events</span>
+    </div>
+
+    <!-- ================= HERO HEADER ================= -->
+    <div class="hero-header">
+      <div class="hero-title-wrap">
+        <h1 class="hero-title">Happening Now on Campus</h1>
+        <span class="live-active-pill">
+          <span class="live-pulse-dot"></span>
+          5 Live Events Active
+        </span>
+      </div>
+      <p class="hero-desc">Real-time active streams, live stage competitions, varsity matches, and check-in desks across campus right now.</p>
+    </div>
+
+    <!-- ================= 3-WAY STATUS SWITCHER CARDS ================= -->
+    <section class="status-switcher-grid">
+      <!-- 1. Upcoming Events -->
+      <div class="status-tab-card">
+        <div>
+          <div class="status-tab-top">
+            <div class="status-icon-and-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <h3 class="status-heading">Upcoming Events</h3>
+            </div>
+            <span class="status-pill-badge purple-light">28 Events</span>
+          </div>
+          <p class="status-tab-desc">Scheduled panels, workshops, and student union mixers this week.</p>
+        </div>
+      </div>
+
+      <!-- 2. Live Events (Active) -->
+      <div class="status-tab-card active-tab-live">
+        <div>
+          <div class="status-tab-top">
+            <div class="status-icon-and-title" style="color: var(--emerald-dark);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/>
+                <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/>
+                <circle cx="12" cy="12" r="2"/>
+                <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/>
+                <path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1"/>
+              </svg>
+              <h3 class="status-heading">Live Events</h3>
+            </div>
+            <span class="status-pill-badge green-solid">
+              <span style="width: 5px; height: 5px; background: white; border-radius: 50%;"></span>
+              5 Happening Now
+            </span>
+          </div>
+          <p class="status-tab-desc">Active gate access, live camera feeds, and real-time interaction enabled.</p>
+        </div>
+        <a href="#" class="status-tab-footer-link">Currently showing all broadcast nodes ↗</a>
+      </div>
+
+      <!-- 3. Past & Recaps -->
+      <div class="status-tab-card">
+        <div>
+          <div class="status-tab-top">
+            <div class="status-icon-and-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="1 4 1 10 7 10"/>
+                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+              </svg>
+              <h3 class="status-heading">Past & Recaps</h3>
+            </div>
+            <span class="status-pill-badge gray-light">9 Recaps</span>
+          </div>
+          <p class="status-tab-desc">Recorded sessions, game summaries, keynote slides, and photo albums.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SEARCH & CONTROLS BAR ================= -->
+    <div class="filter-panel">
+      <!-- Search Input -->
+      <div class="input-live-search-wrap">
+        <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.3-4.3"/>
+        </svg>
+        <input type="text" class="input-live-search" placeholder="Search live events, arenas, speakers, or stages..." />
+        <button class="mic-icon-btn" title="Voice Search">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="22"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Segmented Switcher -->
+      <div class="segmented-control">
+        <button class="segment-btn active">All Live</button>
+        <button class="segment-btn">In-Person Gate Check-in</button>
+        <button class="segment-btn">Virtual Stream Only</button>
+      </div>
+
+      <!-- Zone Dropdown -->
+      <button class="filter-ctrl-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        Zone: All Zones ⌵
+      </button>
+
+      <!-- Sort Button -->
+      <button class="filter-ctrl-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="4" y1="21" x2="4" y2="14"/>
+          <line x1="4" y1="10" x2="4" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="12"/>
+          <line x1="12" y1="8" x2="12" y2="3"/>
+          <line x1="20" y1="21" x2="20" y2="16"/>
+          <line x1="20" y1="12" x2="20" y2="3"/>
+          <line x1="1" y1="14" x2="7" y2="14"/>
+          <line x1="9" y1="8" x2="15" y2="8"/>
+          <line x1="17" y1="16" x2="23" y2="16"/>
+        </svg>
+        Sort
+      </button>
+    </div>
+
+    <!-- ================= ACTIVE FILTER DOCK ================= -->
+    <div class="active-filter-dock">
+      <div class="active-filter-dock-left">
+        <span class="active-label-text">ACTIVE FILTER:</span>
+        <div class="active-chip-green">
+          Live Events (5) <span style="font-size: 13px; cursor: pointer;">✕</span>
+        </div>
+      </div>
+
+      <div class="active-filter-dock-right">
+        <div class="live-sync-indicator">
+          <span style="width: 6px; height: 6px; background: var(--emerald); border-radius: 50%;"></span>
+          Live Sync: <span style="color: #6ee7b7; margin-left: 2px;">Auto-updating in 14s</span>
+        </div>
+        <button class="btn-clear-dock">Clear All</button>
+      </div>
+    </div>
+
+    <!-- ================= ROW 1: 2 FEATURED LIVE CARDS ================= -->
+    <section class="live-featured-grid">
+
+      <!-- FEATURED CARD 1: Pitch Arena -->
+      <article class="featured-live-card">
+        <div class="featured-thumb-container" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80');">
+          <div class="thumb-top-row">
+            <div class="thumb-left-badges">
+              <span class="badge-pill-green">
+                <span class="live-pulse-dot" style="background: white;"></span>
+                STAGE LIVE
+              </span>
+              <span class="badge-pill-dark">Started 28m ago</span>
+            </div>
+            <span class="badge-pill-dark">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              284 tuned in
+            </span>
+          </div>
+
+          <div class="thumb-bottom-title-area">
+            <div class="thumb-category-tag">CAMPUS PITCH ARENA • TECH & ENTREPRENEURSHIP</div>
+            <h2 class="thumb-main-heading">Annual Venture Sprint: Final 6 Tech Pitches</h2>
+          </div>
+        </div>
+
+        <div class="featured-card-body">
+          <div class="meta-details-row">
+            <span class="meta-location-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/>
+              </svg>
+              Hartman Hall, Amphitheater B (Tech Quad)
+            </span>
+            <span class="meta-status-highlight">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 14 14"/>
+              </svg>
+              Pitch 3 of 6 in progress
+            </span>
+          </div>
+
+          <div class="featured-card-actions">
+            <div class="action-btns-left">
+              <button class="btn-green-stream">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"/>
+                </svg>
+                Join Stream
+              </button>
+              <button class="btn-icon-subtle" title="Live Chat">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </button>
+            </div>
+            <span class="host-caption">Host: Center for Innovation</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- FEATURED CARD 2: Basketball Derby Scoreboard -->
+      <article class="featured-live-card">
+        <div class="featured-thumb-container" style="background-image: url('https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=900&q=80');">
+          <div class="thumb-top-row">
+            <span class="badge-pill-orange">🏀 Q3 LIVE SCORE</span>
+            <span class="badge-pill-dark">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+              </svg>
+              410 in attendance
+            </span>
+          </div>
+
+          <div class="thumb-bottom-title-area">
+            <h2 class="thumb-main-heading">Rivals Derby: Lions vs. State Tech</h2>
+          </div>
+        </div>
+
+        <div class="featured-card-body">
+          <!-- Live Scoreboard Component -->
+          <div class="scoreboard-box">
+            <div class="team-cell">
+              <div class="team-avatar home">L</div>
+              <div>
+                <div class="team-name">Lions (Home)</div>
+                <div class="team-foul">18 Fouls</div>
+              </div>
+            </div>
+
+            <div class="score-center-cell">
+              <div class="score-digits">54 – 51</div>
+              <div class="score-time">06:42 • 3rd Qtr</div>
+            </div>
+
+            <div class="team-cell" style="flex-direction: row-reverse; text-align: right;">
+              <div class="team-avatar away">ST</div>
+              <div>
+                <div class="team-name">State Tech</div>
+                <div class="team-foul">14 Fouls</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="meta-details-row">
+            <span class="meta-location-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Campus Arena Pavilion, Court 1 (Sports Pavilion)
+            </span>
+          </div>
+
+          <div class="featured-card-actions">
+            <button class="btn-purple-checkin">Gate Check-in</button>
+            <button class="btn-outline-action">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"/>
+                <line x1="12" y1="20" x2="12" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+              Score Updates
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ================= ROW 2: 3-COLUMN LIVE CARDS ================= -->
+    <section class="live-grid-3">
+
+      <!-- CARD 1: Battle of the Bands -->
+      <article class="secondary-live-card">
+        <div class="secondary-thumb-wrap" style="background-image: url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=700&q=80');">
+          <div class="thumb-top-row">
+            <span class="badge-pill-green" style="font-size: 10.5px;">AUDIO STREAM LIVE</span>
+            <span class="badge-pill-dark" style="font-size: 10.5px;">🎧 315 live</span>
+          </div>
+          <div class="thumb-bottom-title-area">
+            <div class="thumb-category-tag">MUSIC COLLECTIVE</div>
+            <h3 class="secondary-title-h3">Battle of the Bands – Stage B</h3>
+          </div>
+        </div>
+
+        <div class="secondary-card-body">
+          <div class="location-subtle-line">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Open Air Theatre • Central Campus
+          </div>
+          <div class="status-timing-line">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            Started 45m ago • Next act: The Neon Quads
+          </div>
+
+          <!-- Audio Waveform status box -->
+          <div class="waveform-visualizer-box">
+            <span>Feed: <span class="waveform-bars">ılıııl|ı</span></span>
+            <span style="font-weight: 700; color: var(--slate-700);">128 kbps HD</span>
+          </div>
+
+          <div class="secondary-card-actions">
+            <button class="btn-full-width-action purple">🎧 Listen Live</button>
+            <button class="btn-subtle-vote">🗳 Vote</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 2: RoboWars -->
+      <article class="secondary-live-card">
+        <div class="secondary-thumb-wrap" style="background-image: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=700&q=80');">
+          <div class="thumb-top-row">
+            <span class="badge-pill-dark" style="background: #2563eb; color: white; font-size: 10.5px;">ARENA CAM 1</span>
+            <span class="badge-pill-dark" style="font-size: 10.5px;">👁 180 viewing</span>
+          </div>
+          <div class="thumb-bottom-title-area">
+            <div class="thumb-category-tag">ROBOTICS SOCIETY</div>
+            <h3 class="secondary-title-h3">RoboWars Semi–Final Arena Match</h3>
+          </div>
+        </div>
+
+        <div class="secondary-card-body">
+          <div class="location-subtle-line">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Mechanical Lab 102 • North Quad
+          </div>
+          <div class="status-timing-line green">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <rect width="18" height="18" x="3" y="3" rx="2"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+            Round 2 of 3 underway (Triton vs RustBucket)
+          </div>
+
+          <div class="secondary-card-actions" style="margin-top: auto;">
+            <button class="btn-full-width-action lavender">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m22 8-6 4 6 4V8Z"/>
+                <rect width="14" height="12" x="2" y="6" rx="2"/>
+              </svg>
+              Watch Arena Cam
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 3: Design Sprint 24hr -->
+      <article class="secondary-live-card">
+        <div class="secondary-thumb-wrap" style="background-image: url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=700&q=80');">
+          <div class="thumb-top-row">
+            <span class="badge-pill-green" style="font-size: 10.5px;">DROP-IN OPEN</span>
+            <span class="badge-pill-dark" style="font-size: 10.5px;">🪑 22 desks available</span>
+          </div>
+          <div class="thumb-bottom-title-area">
+            <div class="thumb-category-tag">DESIGN GUILD</div>
+            <h3 class="secondary-title-h3">Design Sprint 24hr – Midpoint Mentorship</h3>
+          </div>
+        </div>
+
+        <div class="secondary-card-body">
+          <div class="location-subtle-line">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Design Block L3 • Central Campus
+          </div>
+          <div class="status-timing-line">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            Live until 6:00 PM • Industry mentors on site
+          </div>
+
+          <div class="secondary-card-actions" style="margin-top: auto;">
+            <button class="btn-full-width-action emerald">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <line x1="19" y1="11" x2="19" y2="17"/>
+                <line x1="22" y1="14" x2="16" y2="14"/>
+              </svg>
+              Drop-In Check-In
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- ================= SITE FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="brand-logo">
+            <div class="logo-mark">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                <line x1="4" y1="22" x2="4" y2="15"/>
+              </svg>
+            </div>
+            CampusHub
+          </a>
+          <p>The pulse of university life. Discover organizations, connect with peers, and never miss a campus moment.</p>
+        </div>
+
+        <nav class="footer-links">
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+          <a href="#">Help</a>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+        </nav>
+
+        <div class="footer-socials">
+          <a href="#" class="social-link" title="Discord">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.893.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.078.078 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" title="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" title="Website">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" title="Community">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 CampusHub. All rights reserved.</div>
+        <div>Empowering student communities nationwide.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Segmented button switch active state
+    document.querySelectorAll('.segment-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.segment-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
