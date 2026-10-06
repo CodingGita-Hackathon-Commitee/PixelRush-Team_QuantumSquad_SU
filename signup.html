@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Started with CampusHub - Register</title>
+  <link rel="stylesheet" href="signup-style.css">
+ <style>
+    /* ==========================================================================
+   PAGE 1 (SIGNUP) STYLESHEET
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f8f9fd;
+  color: #1e2432;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Reusable Components */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.button {
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: 0.2s ease;
+}
+
+.button-primary {
+  background-color: #5433ff;
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  background-color: #4225e6;
+}
+
+.button-sso {
+  background-color: #f1f0fd;
+  border: 1px solid #e2e0fb;
+  color: #5433ff;
+  padding: 11px 16px;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 8px;
+  flex: 1;
+}
+
+.button-sso:hover {
+  background-color: #e5e2fc;
+}
+
+.button-block {
+  width: 100%;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 9px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.badge-portal {
+  background-color: #f1f5f9;
+  color: #059669;
+}
+
+.badge-cohort {
+  background-color: #ece8fe;
+  color: #5433ff;
+  border-radius: 20px;
+}
+
+.badge-spotlight {
+  background-color: #ea580c;
+  color: #ffffff;
+  font-size: 10px;
+}
+
+.rsvp-badge {
+  background-color: #ece8fe;
+  color: #5433ff;
+  font-size: 10px;
+}
+
+/* Header */
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.header-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 800;
+  color: #5433ff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #5433ff;
+}
+
+.header-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.login-link {
+  font-size: 13px;
+  font-weight: bold;
+  color: #1e2432;
+}
+
+.login-link:hover {
+  color: #5433ff;
+}
+
+/* Main Layout */
+.main-content {
+  padding: 24px 0 40px;
+}
+
+.content-wrapper {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 24px;
+  align-items: start;
+}
+
+.form-column {
+  min-width: 0;
+}
+
+.form-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #1e2432;
+}
+
+.form-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.fast-track-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.section-label {
+  font-size: 10px;
+  font-weight: bold;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+.fast-track-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.divider-row {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 4px 0;
+}
+
+.divider-row::before,
+.divider-row::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.divider-text {
+  font-size: 10px;
+  font-weight: bold;
+  color: #94a3b8;
+  padding: 0 10px;
+  letter-spacing: 0.5px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #1e2432;
+}
+
+.accredited-tag {
+  font-size: 11px;
+  font-weight: bold;
+  color: #059669;
+}
+
+.field-hint-inline {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  background-color: #f1f0fd;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #1e2432;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #5433ff;
+  background-color: #ffffff;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.icon-input {
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 12px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.field-hint {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.password-meter-bars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.meter-bar {
+  height: 4px;
+  background-color: #e2e8f0;
+  border-radius: 2px;
+}
+
+.meter-bar.active {
+  background-color: #5433ff;
+}
+
+.password-meter-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.year-pills-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.year-pill {
+  padding: 9px;
+  background-color: #f1f0fd;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #475569;
+}
+
+.year-pill.active {
+  background-color: #5433ff;
+  color: #ffffff;
+}
+
+.interest-tags-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.interest-tag {
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #475569;
+  text-align: left;
+}
+
+.interest-tag.active {
+  background-color: #5433ff;
+  border-color: #5433ff;
+  color: #ffffff;
+}
+
+.terms-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.form-checkbox {
+  margin-top: 3px;
+  accent-color: #5433ff;
+  cursor: pointer;
+}
+
+.terms-label {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.terms-link {
+  color: #5433ff;
+  text-decoration: underline;
+}
+
+.submit-btn {
+  padding: 12px;
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+.signin-redirect {
+  text-align: center;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.signin-link {
+  color: #5433ff;
+  font-weight: bold;
+}
+
+/* Right Perks Column */
+.perks-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.spotlight-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.spotlight-image-container {
+  height: 140px;
+  position: relative;
+}
+
+.spotlight-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badge-spotlight {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.spotlight-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  color: #ffffff;
+  padding: 8px 12px;
+}
+
+.spotlight-meta {
+  font-size: 10px;
+  display: block;
+  opacity: 0.85;
+}
+
+.spotlight-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.spotlight-title {
+  font-size: 12px;
+}
+
+.pass-sync-row {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #ffffff;
+}
+
+.sync-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background-color: #ece8fe;
+  color: #5433ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.sync-details {
+  flex: 1;
+}
+
+.sync-title {
+  font-size: 12px;
+  display: block;
+}
+
+.sync-sub {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.check-icon {
+  color: #059669;
+  font-weight: bold;
+}
+
+.privileges-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.privileges-heading {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.privileges-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.privilege-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.privilege-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: #ece8fe;
+  color: #5433ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.privilege-icon-box.icon-blue {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.privilege-content {
+  flex: 1;
+}
+
+.privilege-title {
+  font-size: 12px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.privilege-desc {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.trust-badges-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.trust-badge-item {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trust-icon {
+  font-size: 16px;
+}
+
+.trust-text strong {
+  font-size: 11px;
+  display: block;
+}
+
+.trust-text span {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.testimonial-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+}
+
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.testimonial-quote {
+  font-size: 11px;
+  font-style: italic;
+  color: #334155;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.testimonial-author {
+  font-size: 10px;
+  color: #64748b;
+}
+
+/* Footer */
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  padding: 20px 0;
+}
+
+.footer-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-copyright {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.footer-links {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.footer-link:hover {
+  color: #5433ff;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .content-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .perks-column {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    padding-top: 6px;
+  }
+
+  .fast-track-buttons {
+    flex-direction: column;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .interest-tags-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-right-actions {
+    gap: 8px;
+  }
+
+  .badge-portal {
+    display: none;
+  }
+
+  .form-title {
+    font-size: 22px;
+  }
+
+  .year-pills-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trust-badges-row {
+    grid-template-columns: 1fr;
+  }
+}
+ </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-group">
+        <a href="signup.html" class="logo">CampusHub</a>
+      </div>
+
+      <nav class="navbar" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li class="nav-item"><a href="#events" class="nav-link">Browse Events</a></li>
+          <li class="nav-item"><a href="#orgs" class="nav-link">Student Organizations</a></li>
+          <li class="nav-item"><a href="#help" class="nav-link">Help &amp; FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right-actions">
+        <span class="badge badge-portal">&#9679; Campus Portal v2.4</span>
+        <!-- PROTOTYPE LINK TO LOGIN (PAGE 2) -->
+        <a href="login.html" class="login-link">Sign In</a>
+        <a href="signup.html" class="button button-primary">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <div class="content-wrapper">
+
+      <!-- Left Column: Registration Form Card -->
+      <section class="form-column">
+        <div class="card form-card">
+
+          <!-- Form Header -->
+          <div class="form-header">
+            <span class="badge badge-cohort">&#128737; Spring &amp; Fall 2025 Cohorts</span>
+            <h1 class="form-title">Get Started with CampusHub</h1>
+            <p class="form-subtitle">Connect to verified academic activities, gain fast-track access credentials, and engage seamlessly across campus communities.</p>
+          </div>
+
+          <!-- Fast-Track SSO Options -->
+          <div class="fast-track-section">
+            <span class="section-label">FAST-TRACK FEDERATED VERIFICATION</span>
+            <div class="fast-track-buttons">
+              <a href="login.html" class="button button-sso">&#127891; Campus SSO Portal</a>
+              <a href="login.html" class="button button-sso">&#127963; University ID Card</a>
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="divider-row">
+            <span class="divider-text">OR REGISTER MANUALLY</span>
+          </div>
+
+          <!-- Registration Form -->
+          <form action="login.html" method="get" class="signup-form">
+
+            <!-- Name Fields (Row) -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name" class="form-label">Legal First Name</label>
+                <input type="text" id="first-name" name="first_name" placeholder="Elena" class="form-input">
+              </div>
+              <div class="form-group">
+                <label for="last-name" class="form-label">Family Name</label>
+                <input type="text" id="last-name" name="last_name" placeholder="Vance" class="form-input">
+              </div>
+            </div>
+
+            <!-- Academic Email -->
+            <div class="form-group">
+              <div class="label-row">
+                <label for="academic-email" class="form-label">Academic Email Address</label>
+                <span class="accredited-tag">&#9679; .edu / .ac accredited</span>
+              </div>
+              <div class="input-with-icon">
+                <span class="input-icon">&#9993;</span>
+                <input type="email" id="academic-email" name="email" placeholder="e.vance@university.edu" class="form-input icon-input">
+              </div>
+              <p class="field-hint">Use your registered collegiate domain to unlock departmental private channels and ticketing perks.</p>
+            </div>
+
+            <!-- Academic Department Dropdown -->
+            <div class="form-group">
+              <label for="department-select" class="form-label">Academic Department &amp; Faculty</label>
+              <select id="department-select" name="department" class="form-select">
+                <option value="">Select primary academic division</option>
+                <option value="cs">Computer Science &amp; Engineering</option>
+                <option value="design">Design, HCI &amp; Media Architecture</option>
+                <option value="business">School of Management &amp; Finance</option>
+                <option value="sciences">Natural Sciences &amp; Biotechnology</option>
+              </select>
+            </div>
+
+            <!-- Account Password -->
+            <div class="form-group">
+              <label for="password-input" class="form-label">Account Passcode</label>
+              <div class="input-with-icon">
+                <span class="input-icon">&#128274;</span>
+                <input type="password" id="password-input" name="password" placeholder="••••••••••••" class="form-input icon-input">
+                <button type="button" class="password-toggle-btn" aria-label="Toggle password visibility">&#128065;</button>
+              </div>
+
+              <!-- Password Strength Meter -->
+              <div class="password-meter-bars">
+                <span class="meter-bar active"></span>
+                <span class="meter-bar active"></span>
+                <span class="meter-bar"></span>
+                <span class="meter-bar"></span>
+              </div>
+              <div class="password-meter-labels">
+                <span>Security rating: Enter password</span>
+                <span>Min. 8 characters + numeral</span>
+              </div>
+            </div>
+
+            <!-- Anticipated Graduation Year -->
+            <div class="form-group">
+              <label class="form-label">Anticipated Graduation Year</label>
+              <div class="year-pills-row">
+                <button type="button" class="year-pill">2025</button>
+                <button type="button" class="year-pill active">2026</button>
+                <button type="button" class="year-pill">2027</button>
+                <button type="button" class="year-pill">2028+</button>
+              </div>
+            </div>
+
+            <!-- Primary Engagement Interests -->
+            <div class="form-group">
+              <div class="label-row">
+                <label class="form-label">Primary Engagement Interests</label>
+                <span class="field-hint-inline">Select all that apply</span>
+              </div>
+              <div class="interest-tags-grid">
+                <button type="button" class="interest-tag active">&#10003; Hackathons &amp; Tech</button>
+                <button type="button" class="interest-tag">Club Sports &amp; Wellness</button>
+                <button type="button" class="interest-tag active">&#10003; Campus Concerts &amp; Arts</button>
+                <button type="button" class="interest-tag">Career &amp; Alumni Mixers</button>
+                <button type="button" class="interest-tag">Student Government</button>
+                <button type="button" class="interest-tag">Academic Symposiums</button>
+              </div>
+            </div>
+
+            <!-- Terms Checkbox -->
+            <div class="terms-group">
+              <input type="checkbox" id="terms-agree" name="terms" class="form-checkbox">
+              <label for="terms-agree" class="terms-label">
+                I agree to the <a href="#policy" class="terms-link">Collegiate Acceptable Use Policy</a>, acknowledge university directory integration, and agree to receive verified campus broadcast updates.
+              </label>
+            </div>
+
+            <!-- Submit / Complete Button (PROTOTYPE LINK TO LOGIN) -->
+            <button type="submit" class="button button-primary button-block submit-btn">
+             <a href="http://127.0.0.1:5500/homepage.html"> Complete Setup &amp; Access Passport &rarr;</a>
+            </button>
+
+            <!-- PROTOTYPE LINK TO LOGIN (FROM ARROW) -->
+            <p class="signin-redirect">
+              Already have an authorized collegiate account? <a href="login.html" class="signin-link">Sign In &#8599;</a>
+            </p>
+
+          </form>
+
+        </div>
+      </section>
+
+      <!-- Right Column: Spotlight, Privileges, Testimonial -->
+      <aside class="perks-column" aria-label="Student Perks and Info">
+
+        <!-- Card 1: Featured Spotlight -->
+        <article class="card spotlight-card">
+          <div class="spotlight-image-container">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" alt="Annual Founders TechFest 2025" class="spotlight-image">
+            <span class="badge badge-spotlight">&#128293; FEATURED SPOTLIGHT!</span>
+            <div class="spotlight-overlay">
+              <span class="spotlight-meta">Oct 24 &bull; Engineering Quad &amp; Great Hall</span>
+              <div class="spotlight-title-row">
+                <strong class="spotlight-title">Annual Founders TechFest 2025</strong>
+                <span class="badge rsvp-badge">460 RSVPs</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pass-sync-row">
+            <div class="sync-icon">&#127915;</div>
+            <div class="sync-details">
+              <strong class="sync-title">Digital Student Pass Sync</strong>
+              <span class="sync-sub">Syncs into Apple Wallet &amp; Google Pay</span>
+            </div>
+            <span class="check-icon">&#10003;</span>
+          </div>
+        </article>
+
+        <!-- Card 2: Collegiate Access Privileges -->
+        <article class="card privileges-card">
+          <h2 class="privileges-heading">Collegiate Access Privileges</h2>
+
+          <ul class="privileges-list">
+            <li class="privilege-item">
+              <div class="privilege-icon-box">&#127915;</div>
+              <div class="privilege-content">
+                <strong class="privilege-title">Early Seat Allocation</strong>
+                <p class="privilege-desc">Reserved front-tier student passes for guest lectures, varsity games, and festival concerts 48 hours prior to public release.</p>
+              </div>
+            </li>
+
+            <li class="privilege-item">
+              <div class="privilege-icon-box icon-blue">&#128101;</div>
+              <div class="privilege-content">
+                <strong class="privilege-title">140+ Recognized Society Hubs</strong>
+                <p class="privilege-desc">Direct messaging, officer election voting rights, and internal budgeting transparency for club organizers.</p>
+              </div>
+            </li>
+
+            <li class="privilege-item">
+              <div class="privilege-icon-box">&#127891;</div>
+              <div class="privilege-content">
+                <strong class="privilege-title">Verified Academic Ledger</strong>
+                <p class="privilege-desc">Export extracurricular participation credentials directly to LinkedIn and your university registrar record.</p>
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Trust Badges Row -->
+        <div class="trust-badges-row">
+          <div class="trust-badge-item">
+            <span class="trust-icon">&#128737;</span>
+            <div class="trust-text">
+              <strong>Directory Sync</strong>
+              <span>FERPA Compliant</span>
+            </div>
+          </div>
+
+          <div class="trust-badge-item">
+            <span class="trust-icon">&#128274;</span>
+            <div class="trust-text">
+              <strong>TLS 1.3 Cipher</strong>
+              <span>Encrypted Gateway</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Testimonial -->
+        <article class="card testimonial-card">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Marcus Lee" class="testimonial-avatar">
+          <div class="testimonial-content">
+            <blockquote class="testimonial-quote">
+              "Signing up via CampusHub gave our robotics team immediate access to auditorium space and university funding."
+            </blockquote>
+            <p class="testimonial-author"><strong>Marcus Lee</strong> &bull; President, Autonomous Tech Guild</p>
+          </div>
+        </article>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <p class="footer-copyright">&copy; 2025 University CampusHub &bull; All rights reserved across collegiate branches</p>
+
+      <nav class="footer-nav" aria-label="Footer links">
+        <ul class="footer-links">
+          <li><a href="#terms" class="footer-link">Terms</a></li>
+          <li><a href="#privacy" class="footer-link">Privacy</a></li>
+          <li><a href="#accessibility" class="footer-link">Accessibility</a></li>
+          <li><a href="#help" class="footer-link">Help Center</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
