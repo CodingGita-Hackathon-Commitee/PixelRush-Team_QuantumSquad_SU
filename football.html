@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Design Thinking Workshop 2026 - CampusHub</title>
+  <title>Campus Football League 2026 - CampusHub</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /*
-   1. GLOBAL RESET & BASE STYLES */
+    /* ==========================================================================
+   1. GLOBAL RESET & BASE STYLES
+   ========================================================================== */
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +20,7 @@ body {
   background-color: #f8f9fd;
   color: #1e2432;
   line-height: 1.5;
-  overflow-x: hidden; /* Prevents right-side horizontal scrolling */
+  overflow-x: hidden; /* Prevents unwanted horizontal scrolling */
 }
 
 a {
@@ -110,11 +111,6 @@ address {
 .category-badge {
   background-color: #ece8fe;
   color: #5433ff;
-}
-
-.venue-badge {
-  background-color: #f1f5f9;
-  color: #64748b;
 }
 
 /* ==========================================================================
@@ -285,18 +281,50 @@ address {
   gap: 20px;
 }
 
-.hero-figure {
+.hero-image-container {
   width: 210px;
-  height: 210px;
+  height: 220px;
   flex-shrink: 0;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
+  background-color: #0b1120;
 }
 
 .hero-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.image-caption-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  color: #ffffff;
+  padding: 10px;
+}
+
+.overlay-sub {
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: #fbbf24;
+  font-weight: bold;
+  display: block;
+}
+
+.overlay-main {
+  font-size: 12px;
+  display: block;
+  margin: 2px 0;
+}
+
+.overlay-date {
+  font-size: 10px;
+  color: #94a3b8;
+  display: block;
 }
 
 .hero-details {
@@ -357,12 +385,12 @@ address {
   border-top: 1px solid #f1f5f9;
 }
 
-.free-tag {
+.price-highlight {
   font-size: 22px;
   color: #10b981;
 }
 
-.participant-count {
+.price-unit {
   font-size: 13px;
   color: #64748b;
 }
@@ -375,13 +403,18 @@ address {
   display: block;
   font-size: 12px;
   font-weight: bold;
-  color: #10b981;
+  color: #ea580c;
   margin-bottom: 4px;
 }
 
 progress {
   width: 140px;
   height: 8px;
+}
+
+/* Orange/brown progress bar for high capacity */
+.progress-orange::-webkit-progress-value {
+  background-color: #ea580c;
 }
 
 .hero-cta-buttons {
@@ -432,7 +465,7 @@ progress {
 }
 
 /* ==========================================================================
-   7. MENTORS & WHAT YOU'LL LEARN
+   7. OFFICIALS & MATCH HIGHLIGHTS
    ========================================================================== */
 .columns-split {
   display: grid;
@@ -440,18 +473,18 @@ progress {
   gap: 20px;
 }
 
-.mentors-grid {
+.officials-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
-.mentor-card {
+.official-card {
   text-align: center;
   padding: 15px 10px;
 }
 
-.mentor-avatar {
+.official-avatar {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -459,18 +492,18 @@ progress {
   margin: 0 auto 8px;
 }
 
-.mentor-name {
+.official-name {
   font-size: 13px;
   margin-bottom: 2px;
 }
 
-.mentor-company {
-  font-size: 12px;
+.official-role {
+  font-size: 11px;
   color: #5433ff;
   font-weight: bold;
 }
 
-.mentor-role {
+.official-team {
   font-size: 11px;
   color: #64748b;
 }
@@ -487,10 +520,8 @@ progress {
 
 .benefit-item {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  font-weight: 500;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 .benefit-icon {
@@ -505,8 +536,34 @@ progress {
   flex-shrink: 0;
 }
 
-.benefit-text {
-  color: #1e2432;
+.benefit-title {
+  font-size: 13px;
+  display: block;
+}
+
+.benefit-desc {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.entry-notice-box {
+  background-color: #fef2f2;
+  border: 1px dashed #fca5a5;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notice-icon {
+  font-size: 16px;
+}
+
+.notice-text {
+  font-size: 12px;
+  color: #b91c1c;
+  font-weight: bold;
 }
 
 /* ==========================================================================
@@ -527,7 +584,7 @@ progress {
   margin-bottom: 12px;
 }
 
-.timeline-list {
+.schedule-timeline {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -535,30 +592,32 @@ progress {
   padding-left: 12px;
 }
 
-.timeline-time {
-  font-size: 12px;
-  color: #5433ff;
-  display: block;
-}
-
-.timeline-description {
-  font-size: 12px;
-}
-
-.venue-header-row {
+.schedule-top {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  gap: 6px;
+  margin-bottom: 2px;
 }
 
-.level-badge {
-  font-size: 10px;
-  font-weight: bold;
-  background-color: #ece8fe;
+.schedule-time {
+  font-size: 11px;
   color: #5433ff;
-  padding: 2px 8px;
+}
+
+.tag-pill {
+  font-size: 9px;
+  font-weight: bold;
+  padding: 2px 6px;
   border-radius: 10px;
+}
+
+.tag-neutral { background-color: #f1f5f9; color: #475569; }
+.tag-kickoff { background-color: #fee2e2; color: #dc2626; }
+.tag-podium { background-color: #fef3c7; color: #d97706; }
+
+.schedule-heading {
+  font-size: 12px;
+  display: block;
 }
 
 .venue-address {
@@ -570,18 +629,34 @@ progress {
   display: block;
 }
 
-.map-figure {
+.stadium-map-figure {
+  position: relative;
   width: 100%;
   height: 90px;
   border-radius: 6px;
   overflow: hidden;
   margin-bottom: 8px;
+  background-color: #e2e8f0;
 }
 
 .map-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.map-label-tag {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  color: #ea580c;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 .venue-map-link {
@@ -594,7 +669,7 @@ progress {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .organizer-logo-box {
@@ -618,6 +693,12 @@ progress {
   color: #64748b;
 }
 
+.organizer-description {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
 .social-links-group {
   display: flex;
   gap: 8px;
@@ -635,7 +716,7 @@ progress {
 }
 
 /* ==========================================================================
-   9. BOOKING SIDEBAR (NO RIGHT OVERFLOW)
+   9. BOOKING SIDEBAR (EAST BLEACHERS)
    ========================================================================== */
 .booking-sidebar {
   width: 100%;
@@ -656,8 +737,8 @@ progress {
 
 .price-row {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: baseline;
+  gap: 6px;
 }
 
 .currency-amount {
@@ -665,16 +746,7 @@ progress {
   font-weight: bold;
 }
 
-.free-workshop-badge {
-  font-size: 11px;
-  font-weight: bold;
-  background-color: #d1fae5;
-  color: #059669;
-  padding: 3px 8px;
-  border-radius: 6px;
-}
-
-.price-subtext {
+.price-frequency {
   font-size: 12px;
   color: #64748b;
 }
@@ -691,6 +763,7 @@ progress {
   justify-content: space-between;
   font-weight: bold;
   margin-bottom: 4px;
+  color: #ea580c;
 }
 
 .urgency-subtext {
@@ -702,6 +775,15 @@ progress {
   width: 100%;
   height: 6px;
   margin-top: 6px;
+}
+
+.percentage-label {
+  display: block;
+  font-size: 10px;
+  text-align: right;
+  color: #ea580c;
+  font-weight: bold;
+  margin-top: 2px;
 }
 
 .alert-banner {
@@ -722,6 +804,13 @@ progress {
   color: #fee2e2;
 }
 
+.filling-fast-heading {
+  font-size: 13px;
+  font-weight: bold;
+  color: #059669;
+  text-align: center;
+}
+
 .selection-heading-group {
   display: flex;
   justify-content: space-between;
@@ -732,10 +821,10 @@ progress {
   font-size: 13px;
 }
 
-.lab-room-tag {
+.stand-link {
   font-size: 11px;
-  color: #64748b;
-  font-weight: 500;
+  color: #5433ff;
+  font-weight: bold;
 }
 
 .stage-screen-box {
@@ -787,11 +876,11 @@ progress {
 }
 
 .seat-available {
-  background-color: #34d399;
+  background-color: #059669; /* Emerald football green */
 }
 
 .seat-available:hover {
-  background-color: #10b981;
+  background-color: #047857;
   transform: scale(1.15);
 }
 
@@ -825,7 +914,7 @@ progress {
   display: inline-block;
 }
 
-.legend-available { background-color: #34d399; }
+.legend-available { background-color: #059669; }
 .legend-booked { background-color: #e2e8f0; }
 .legend-selected { background-color: #5433ff; }
 
@@ -857,7 +946,7 @@ progress {
   font-weight: bold;
 }
 
-.desk-location {
+.stand-detail {
   color: #64748b;
   font-size: 11px;
 }
@@ -968,7 +1057,7 @@ progress {
     flex-direction: column;
   }
 
-  .hero-figure {
+  .hero-image-container {
     width: 100%;
     height: 180px;
   }
@@ -1015,7 +1104,7 @@ progress {
     width: 100%;
   }
 
-  .mentors-grid {
+  .officials-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1041,9 +1130,9 @@ progress {
           <li class="nav-item dropdown">
             <a href="index.html" class="nav-link dropdown-toggle">Events / Explore</a>
             <ul class="dropdown-menu">
-              <li><a href="http://127.0.0.1:5500/index4.html" class="dropdown-item">Workshops</a></li>
-              <li><a href="#bootcamps" class="dropdown-item">Design Bootcamps</a></li>
-              <li><a href="#hackathons" class="dropdown-item">Hackathons</a></li>
+              <li><a href="#sports" class="dropdown-item">Sports Leagues</a></li>
+              <li><a href="#championships" class="dropdown-item">Championships</a></li>
+              <li><a href="#tournaments" class="dropdown-item">Tournaments</a></li>
             </ul>
           </li>
           <li class="nav-item"><a href="#compare" class="nav-link">Compare</a></li>
@@ -1077,50 +1166,54 @@ progress {
 
         <!-- Hero Card -->
         <article class="card hero-card" id="event-hero">
-          <figure class="hero-figure">
-            <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80" alt="Design Thinking Workshop Empathize Ideate Prototype Poster" class="hero-image">
-          </figure>
+          <div class="hero-image-container">
+            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80" alt="Campus Football League match under stadium floodlights" class="hero-image">
+            <div class="image-caption-overlay">
+              <span class="overlay-sub">CHAMPIONSHIP FINAL</span>
+              <strong class="overlay-main">Engineering vs Management</strong>
+              <span class="overlay-date">10 OCT 2026 &bull; 4:00 PM</span>
+            </div>
+          </div>
 
           <div class="hero-details">
             <div class="tag-badges">
-              <span class="badge category-badge">Workshops</span>
-              <span class="badge venue-badge">Collegiate Guild</span>
+              <span class="badge category-badge">Sports</span>
             </div>
 
-            <h1 class="hero-title">Design Thinking Workshop</h1>
-            <p class="hero-subtitle">Empathize. Ideate. Prototype.</p>
+            <h1 class="hero-title">Campus Football League</h1>
+            <p class="hero-subtitle">Passion. Rivalry. Glory.</p>
 
             <div class="event-meta-grid">
               <div class="meta-item">
                 <span class="meta-icon">&#128197;</span>
                 <div class="meta-content">
-                  <strong class="meta-primary">14 Oct 2026</strong>
-                  <span class="meta-secondary">2:00 PM - 6:00 PM</span>
+                  <strong class="meta-primary">10 Oct 2026</strong>
+                  <span class="meta-secondary">4:00 PM - 8:00 PM</span>
                 </div>
               </div>
 
               <div class="meta-item">
-                <span class="meta-icon">&#128205;</span>
+                <span class="meta-icon">&#127967;</span>
                 <div class="meta-content">
-                  <strong class="meta-primary">Innovation Lab, Design Block</strong>
-                  <span class="meta-secondary">Design Block, Main...</span>
+                  <strong class="meta-primary">University Ground</strong>
+                  <span class="meta-secondary">Sports Complex, North Ring</span>
                 </div>
               </div>
             </div>
 
             <div class="hero-status-row">
               <div class="price-container">
-                <strong class="free-tag">Free</strong>
-                <span class="participant-count">(₹0 per ticket)</span>
+                <strong class="price-highlight">&#8377;100</strong>
+                <span class="price-unit">/ per ticket</span>
               </div>
               <div class="seats-progress-container">
-                <span class="seats-progress-label">&#128101; 25 / 50 seats left</span>
-                <progress max="50" value="25" class="seats-progress-bar"></progress>
+                <span class="seats-progress-label">&#128101; 18 / 200 seats left (91% filled)</span>
+                <progress max="200" value="182" class="seats-progress-bar progress-orange"></progress>
               </div>
             </div>
 
             <div class="hero-cta-buttons">
-              <a href="http://127.0.0.1:5500/ticketprocess.html" type="button" class="button button-primary">Register Now &rarr;</a>
+              <a href="my-events.html" type="button" class="button button-primary">Register Now &rarr;</a>
               <button type="button" class="button button-secondary save-button">&#9825; Save Event</button>
             </div>
           </div>
@@ -1130,9 +1223,9 @@ progress {
         <nav class="tabs-nav" aria-label="Event sections">
           <ul class="tabs-list">
             <li><a href="#about" class="tab-link active">About</a></li>
-            <li><a href="#mentors" class="tab-link">Mentors</a></li>
-            <li><a href="http://127.0.0.1:5500/campus%20calendar/calendar.html" class="tab-link">Schedule</a></li>
-            <li><a href="#venue" class="tab-link">Venue</a></li>
+            <li><a href="#officials" class="tab-link">Key Officials &amp; Teams</a></li>
+            <li><a href="#schedule" class="tab-link">Schedule</a></li>
+            <li><a href="#venue" class="tab-link">Stadium/Venue</a></li>
             <li><a href="#organizer" class="tab-link">Organizer</a></li>
           </ul>
         </nav>
@@ -1141,81 +1234,94 @@ progress {
         <section id="about" class="content-section">
           <h2 class="section-title">&#128196; About the Event</h2>
           <p class="paragraph">
-            The Design Thinking Workshop 2026 is an intensive 4-hour hands-on sprint dedicated to human-centered product development, UX research heuristics, and interactive digital prototyping. Students and campus innovators collaborate in cross-functional pods to transform ambiguity into tangible products using modern design methodologies.
+            The Campus Football League (CFL 2026) reaches its grand finale! Join 1,200+ passionate students and alumni under the stadium floodlights as the indomitable Faculty of Engineering Titans clash against the reigning champions, Faculty of Management Dynamos.
           </p>
           <p class="paragraph">
-            Whether you are exploring UI/UX for the first time or sharpening your portfolio for upcoming tech recruiting sprints, this masterclass equips you with real-world case interview techniques, user empathy interviews, rapid paper sketching, and Figma component libraries.
+            Expect intense tactical football, roaring student sections, halftime performances by the varsity dance troupe, and food stalls from popular campus eateries. Every ticket guarantees entry to East Bleachers and a chance to win exclusive matchday merchandise.
           </p>
         </section>
 
-        <!-- Mentors and What You'll Learn (Two Columns) -->
+        <!-- Officials and Match Highlights (Two Columns) -->
         <div class="columns-split">
 
-          <!-- Mentors & Facilitators -->
-          <section id="mentors" class="content-section">
-            <h2 class="section-title">&#128101; Mentors &amp; Facilitators</h2>
-            <div class="mentors-grid">
-              
-              <!-- Mentor 1 -->
-              <article class="card mentor-card">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Rohan Mehta" class="mentor-avatar">
-                <h3 class="mentor-name">Rohan Mehta</h3>
-                <p class="mentor-company">Google UX</p>
-                <p class="mentor-role">Sr. Product Designer</p>
+          <!-- Key Officials & Coaches -->
+          <section id="officials" class="content-section">
+            <h2 class="section-title">&#127937; Key Officials &amp; Coaches</h2>
+            <div class="officials-grid">
+
+              <!-- Official 1 -->
+              <article class="card official-card">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Coach Rajesh" class="official-avatar">
+                <h3 class="official-name">Coach Rajesh</h3>
+                <p class="official-role">Head Coach</p>
+                <p class="official-team">Titans Football Club</p>
               </article>
 
-              <!-- Mentor 2 -->
-              <article class="card mentor-card">
-                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" alt="Ananya Sharma" class="mentor-avatar">
-                <h3 class="mentor-name">Ananya Sharma</h3>
-                <p class="mentor-company">Microsoft</p>
-                <p class="mentor-role">Lead UX Researcher</p>
+              <!-- Official 2 -->
+              <article class="card official-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Capt. Arjun" class="official-avatar">
+                <h3 class="official-name">Capt. Arjun</h3>
+                <p class="official-role">Team Captain</p>
+                <p class="official-team">Management Dynamos</p>
               </article>
 
-              <!-- Mentor 3 -->
-              <article class="card mentor-card">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Vikram Singh" class="mentor-avatar">
-                <h3 class="mentor-name">Vikram Singh</h3>
-                <p class="mentor-company">Amazon Lab</p>
-                <p class="mentor-role">Interaction Specialist</p>
+              <!-- Official 3 -->
+              <article class="card official-card">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Referee Sen" class="official-avatar">
+                <h3 class="official-name">Referee Sen</h3>
+                <p class="official-role">Chief Match Referee</p>
+                <p class="official-team">Collegiate Ref Panel</p>
               </article>
 
-              <!-- Mentor 4 -->
-              <article class="card mentor-card">
-                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Sneha Iyer" class="mentor-avatar">
-                <h3 class="mentor-name">Sneha Iyer</h3>
-                <p class="mentor-company">Figma Fellow</p>
-                <p class="mentor-role">Creative Director</p>
+              <!-- Official 4 -->
+              <article class="card official-card">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" alt="Physio Priya" class="official-avatar">
+                <h3 class="official-name">Physio Priya</h3>
+                <p class="official-role">Lead Sports Physio</p>
+                <p class="official-team">Campus Health Center</p>
               </article>
 
             </div>
           </section>
 
-          <!-- What You'll Learn -->
-          <section id="learn" class="content-section">
-            <h2 class="section-title">&#10024; What You'll Learn</h2>
+          <!-- Match Highlights -->
+          <section id="highlights" class="content-section">
+            <h2 class="section-title">&#9917; Match Highlights</h2>
             <ul class="benefits-list">
               <li class="benefit-item">
+                <span class="benefit-icon">&#128227;</span>
+                <div class="benefit-info">
+                  <strong class="benefit-title">Live Fan Cheer Squads</strong>
+                  <p class="benefit-desc">Noise-makers &amp; face-paint stalls</p>
+                </div>
+              </li>
+              <li class="benefit-item">
+                <span class="benefit-icon">&#129380;</span>
+                <div class="benefit-info">
+                  <strong class="benefit-title">Refreshment Included</strong>
+                  <p class="benefit-desc">Energy beverage &amp; snack coupon</p>
+                </div>
+              </li>
+              <li class="benefit-item">
+                <span class="benefit-icon">&#128085;</span>
+                <div class="benefit-info">
+                  <strong class="benefit-title">Varsity Jersey Raffle</strong>
+                  <p class="benefit-desc">5 signed match balls given away</p>
+                </div>
+              </li>
+              <li class="benefit-item">
                 <span class="benefit-icon">&#127942;</span>
-                <span class="benefit-text">Human-centered research framework</span>
-              </li>
-              <li class="benefit-item">
-                <span class="benefit-icon">&#128101;</span>
-                <span class="benefit-text">1-on-1 mentorship with industry leads</span>
-              </li>
-              <li class="benefit-item">
-                <span class="benefit-icon">&#128221;</span>
-                <span class="benefit-text">Rapid paper wireframing &amp; prototyping</span>
-              </li>
-              <li class="benefit-item">
-                <span class="benefit-icon">&#9889;</span>
-                <span class="benefit-text">Figma components &amp; dynamic variables</span>
-              </li>
-              <li class="benefit-item">
-                <span class="benefit-icon">&#127891;</span>
-                <span class="benefit-text">Collegiate certification badge</span>
+                <div class="benefit-info">
+                  <strong class="benefit-title">Championship Ceremony</strong>
+                  <p class="benefit-desc">Gold medal presentation with Dean</p>
+                </div>
               </li>
             </ul>
+
+            <div class="entry-notice-box">
+              <span class="notice-icon">&#128737;</span>
+              <p class="notice-text">Student ID mandatory for gate entry</p>
+            </div>
           </section>
 
         </div>
@@ -1223,59 +1329,84 @@ progress {
         <!-- Schedule, Venue, Organizer Row -->
         <div class="cards-triplet-grid">
 
-          <!-- Schedule -->
+          <!-- Match Day Schedule -->
           <section id="schedule" class="card info-card">
-            <h2 class="card-title">&#128340; Schedule</h2>
-            <ol class="timeline-list">
-              <li class="timeline-item">
-                <strong class="timeline-time">02:00 PM</strong>
-                <span class="timeline-description">Check-in &amp; Team Formations</span>
+            <h2 class="card-title">&#128340; Match Day Schedule</h2>
+            <ol class="schedule-timeline">
+              <li class="schedule-item">
+                <div class="schedule-top">
+                  <strong class="schedule-time">04:00 PM</strong>
+                  <span class="tag-pill tag-neutral">Gate 2 &amp; 4</span>
+                </div>
+                <strong class="schedule-heading">Fan Zone &amp; Stadium Gates Open</strong>
               </li>
-              <li class="timeline-item">
-                <strong class="timeline-time">02:30 PM</strong>
-                <span class="timeline-description">User Empathy &amp; Problem Framing</span>
+
+              <li class="schedule-item">
+                <div class="schedule-top">
+                  <strong class="schedule-time">04:30 PM</strong>
+                  <span class="tag-pill tag-neutral">Pitch</span>
+                </div>
+                <strong class="schedule-heading">Official Team Warm-ups</strong>
               </li>
-              <li class="timeline-item">
-                <strong class="timeline-time">03:45 PM</strong>
-                <span class="timeline-description">Hands-on Wireframing Sprint</span>
+
+              <li class="schedule-item">
+                <div class="schedule-top">
+                  <strong class="schedule-time">05:00 PM</strong>
+                  <span class="tag-pill tag-kickoff">Kick-off</span>
+                </div>
+                <strong class="schedule-heading">Championship Final (1st Half)</strong>
               </li>
-              <li class="timeline-item">
-                <strong class="timeline-time">05:15 PM</strong>
-                <span class="timeline-description">Peer Critiques &amp; Final Showcase</span>
+
+              <li class="schedule-item">
+                <div class="schedule-top">
+                  <strong class="schedule-time">06:15 PM</strong>
+                  <span class="tag-pill tag-neutral">Centre Field</span>
+                </div>
+                <strong class="schedule-heading">Halftime Dance Show &amp; Raffle</strong>
+              </li>
+
+              <li class="schedule-item">
+                <div class="schedule-top">
+                  <strong class="schedule-time">07:30 PM</strong>
+                  <span class="tag-pill tag-podium">Podium</span>
+                </div>
+                <strong class="schedule-heading">Trophy Ceremony &amp; Fireworks</strong>
               </li>
             </ol>
           </section>
 
-          <!-- Venue Details -->
+          <!-- Stadium / Venue -->
           <section id="venue" class="card info-card">
-            <div class="venue-header-row">
-              <h2 class="card-title">&#128205; Venue Details</h2>
-              <span class="level-badge">Level 3</span>
-            </div>
+            <h2 class="card-title">&#128205; Venue</h2>
             <address class="venue-address">
-              <strong class="venue-name">Innovation Lab, Design Block</strong>
-              <span>North Quad Campus, Main Academic Ring</span>
+              <strong class="venue-name">University Ground, Complex</strong>
+              <span>Sports Complex, North Campus, Gate 2</span>
             </address>
-            <div class="map-figure">
-              <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=400&q=80" alt="Map showing Innovation Lab and Studio 8" class="map-image">
+            <div class="map-figure stadium-map-figure">
+              <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=400&q=80" alt="Stadium Map East Bleachers" class="map-image">
+              <span class="map-label-tag">Main Bleachers</span>
             </div>
-            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="venue-map-link">View Campus Map &#8599;</a>
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="venue-map-link">View on Google Maps &#8599;</a>
           </section>
 
           <!-- Organizer -->
           <section id="organizer" class="card info-card">
-            <h2 class="card-title">&#128737; Organizer</h2>
+            <h2 class="card-title">&#127939; Organizer</h2>
             <div class="organizer-header">
-              <div class="organizer-logo-box">&#127912;</div>
+              <div class="organizer-logo-box">&#128737;</div>
               <div class="organizer-names">
-                <h3 class="organizer-title">Designers Guild</h3>
-                <p class="organizer-subtitle">Collegiate UX Society &bull; 1,420 Active Members</p>
+                <h3 class="organizer-title">Athletics Board</h3>
+                <p class="organizer-subtitle">Campus Sports Council</p>
               </div>
             </div>
+            <p class="organizer-description">
+              Official governing council for university inter-department leagues, coaching camps, and national trials.
+            </p>
             <div class="social-links-group">
               <a href="#website" class="social-link" aria-label="Website">&#127760;</a>
-              <a href="index.html" class="social-link" aria-label="Guild Events">&#128197;</a>
-              <a href="#mail" class="social-link" aria-label="Contact Email">&#9993;</a>
+              <a href="#fixtures" class="social-link" aria-label="Fixtures">&#128197;</a>
+              <a href="#stats" class="social-link" aria-label="League Stats">&#128202;</a>
+              <a href="#media" class="social-link" aria-label="Media">&#128247;</a>
             </div>
           </section>
 
@@ -1283,27 +1414,27 @@ progress {
 
       </div>
 
-      <!-- Right Column: Studio Desk Selection Sidebar -->
-      <aside class="booking-sidebar" aria-label="Studio Desk Selection">
+      <!-- Right Column: East Bleachers Seat Selection Sidebar -->
+      <aside class="booking-sidebar" aria-label="Bleacher Seat Selection">
         <div class="card booking-card">
 
           <!-- Ticket Price Header -->
           <div class="booking-price-header">
-            <span class="sidebar-heading">Ticket Price</span>
+            <span class="sidebar-heading">TICKET PRICE</span>
             <div class="price-row">
-              <span class="currency-amount">&#8377;0</span>
-              <span class="free-workshop-badge">FREE WORKSHOP</span>
+              <span class="currency-amount">&#8377;100</span>
+              <span class="price-frequency">/ per person</span>
             </div>
-            <p class="price-subtext">per student participant</p>
           </div>
 
           <!-- Seats Status Box -->
           <div class="availability-callout">
             <div class="availability-status-row">
-              <span class="seats-left-badge">&#128101; 25 seats left</span>
+              <span class="seats-left-badge">&#9888; 18 seats left</span>
             </div>
-            <p class="urgency-subtext">Seats fill fast for studio sprints. Reserve your spot now.</p>
-            <progress class="capacity-progress" value="50" max="100"></progress>
+            <p class="urgency-subtext">Seats are filling fast! Book your spot now.</p>
+            <progress class="capacity-progress progress-orange" value="91" max="100"></progress>
+            <span class="percentage-label">91% BOOKED</span>
           </div>
 
           <!-- Hurry Up Alert Banner -->
@@ -1312,79 +1443,82 @@ progress {
             <p class="alert-message">Few seats remaining</p>
           </div>
 
-          <!-- Studio Desk Selection Header -->
+          <!-- Seats Filling Alert Title -->
+          <p class="filling-fast-heading">Hurry Up!! Seats are filling fast</p>
+
+          <!-- Bleachers Selection Header -->
           <div class="selection-heading-group">
-            <h3 class="selection-title">Studio Desk Selection</h3>
-            <span class="lab-room-tag">Lab Room 304</span>
+            <h3 class="selection-title">Interactive Seat Selection</h3>
+            <span class="stand-link">East Stand</span>
           </div>
 
-          <!-- Instructor Stage Indicator -->
+          <!-- Pitch Indicator -->
           <div class="stage-screen-box">
-            <span class="stage-text">INSTRUCTOR STAGE / WHITEBOARD</span>
+            <span class="stage-text">FOOTBALL PITCH / FIELD</span>
           </div>
 
-          <!-- Studio Desk Seating Table Matrix -->
-          <table class="seating-table" aria-label="Studio desk seating layout">
+          <!-- Seating Chart Matrix -->
+          <table class="seating-table" aria-label="Bleachers seating arrangement">
             <tbody>
               <!-- Row A -->
               <tr>
                 <th scope="row">A</th>
-                <td><button type="button" class="seat seat-available" aria-label="Desk A1"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk A2"></button></td>
-                <td><button type="button" class="seat seat-booked" disabled aria-label="Desk A3"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk A4"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk A5"></button></td>
-                <td><button type="button" class="seat seat-booked" disabled aria-label="Desk A6"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk A7"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk A8"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat A1"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat A2"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat A3"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat A4"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat A5"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat A6"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat A7"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat A8"></button></td>
               </tr>
               <!-- Row B -->
               <tr>
                 <th scope="row">B</th>
-                <td><button type="button" class="seat seat-booked" disabled aria-label="Desk B1"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk B2"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk B3"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk B4"></button></td>
-                <td><button type="button" class="seat seat-booked" disabled aria-label="Desk B5"></button></td>
-                <td><button type="button" class="seat seat-booked" disabled aria-label="Desk B6"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk B7"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk B8"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat B1"></button></td>
+                <td><button type="button" class="seat seat-booked" disabled aria-label="Seat B2"></button></td>
+                <td><button type="button" class="seat seat-selected" aria-label="Seat B3"></button></td>
+                <td><button type="button" class="seat seat-booked" disabled aria-label="Seat B4"></button></td>
+                <td><button type="button" class="seat seat-booked" disabled aria-label="Seat B5"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat B6"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat B7"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat B8"></button></td>
               </tr>
               <!-- Row C -->
               <tr>
                 <th scope="row">C</th>
-                <td><button type="button" class="seat seat-available" aria-label="Desk C1"></button></td>
-                <td><button type="button" class="seat seat-selected" aria-label="Desk C2"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk C3"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk C4"></button></td>
-                <td><button type="button" class="seat seat-booked" disabled aria-label="Desk C5"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk C6"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk C7"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk C8"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat C1"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat C2"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat C3"></button></td>
+                <td><button type="button" class="seat seat-booked" disabled aria-label="Seat C4"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat C5"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat C6"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat C7"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat C8"></button></td>
               </tr>
               <!-- Row D -->
               <tr>
                 <th scope="row">D</th>
-                <td><button type="button" class="seat seat-available" aria-label="Desk D1"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk D2"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk D3"></button></td>
-                <td><button type="button" class="seat seat-booked" disabled aria-label="Desk D4"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk D5"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk D6"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk D7"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk D8"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat D1"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat D2"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat D3"></button></td>
+                <td><button type="button" class="seat seat-booked" disabled aria-label="Seat D4"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat D5"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat D6"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat D7"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat D8"></button></td>
               </tr>
               <!-- Row E -->
               <tr>
                 <th scope="row">E</th>
-                <td><button type="button" class="seat seat-available" aria-label="Desk E1"></button></td>
-                <td><button type="button" class="seat seat-booked" disabled aria-label="Desk E2"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk E3"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk E4"></button></td>
-                <td><button type="button" class="seat seat-booked" disabled aria-label="Desk E5"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk E6"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk E7"></button></td>
-                <td><button type="button" class="seat seat-available" aria-label="Desk E8"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat E1"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat E2"></button></td>
+                <td><button type="button" class="seat seat-booked" disabled aria-label="Seat E3"></button></td>
+                <td><button type="button" class="seat seat-booked" disabled aria-label="Seat E4"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat E5"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat E6"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat E7"></button></td>
+                <td><button type="button" class="seat seat-available" aria-label="Seat E8"></button></td>
               </tr>
             </tbody>
           </table>
@@ -1407,25 +1541,25 @@ progress {
 
           <!-- Selected Seat Summary -->
           <div class="selected-summary-box">
-            <span class="summary-label">Selected Seat</span>
+            <span class="summary-label">Selected Seats</span>
             <div class="selected-tags-row">
-              <span class="seat-badge">Pod C2</span>
-              <span class="desk-location">Studio Pod &bull; Innovation Lab</span>
-              <span class="summary-cost">Ticket: <strong>&#8377;0</strong></span>
+              <span class="seat-badge">B3</span>
+              <span class="stand-detail">Stand East, Row B</span>
+              <span class="summary-cost">Ticket: <strong>&#8377;100</strong></span>
             </div>
           </div>
 
           <!-- Total Row -->
           <div class="total-row">
             <span class="total-label">Total</span>
-            <span class="total-price">&#8377;0</span>
+            <span class="total-price">&#8377;100</span>
           </div>
 
           <!-- Submit Button -->
-          <button type="button" class="button button-primary button-block"><a href="http://127.0.0.1:5500/ticketprocess.html">Proceed to Register &rarr;</a></button>
+          <button type="button" class="button button-primary button-block">Proceed to Register &rarr;</button>
 
           <!-- Trust Notice -->
-          <p class="trust-badge">&#10003; Instant digital confirmation sent to campus email.</p>
+          <p class="trust-badge">&#10003; Instant digital QR pass issued to university email</p>
 
         </div>
       </aside>
@@ -1445,7 +1579,7 @@ progress {
         <ul class="footer-links">
           <li><a href="#directory" class="footer-link">Campus Directory</a></li>
           <li><a href="#guidelines" class="footer-link">Student Guidelines</a></li>
-          <li><a href="http://127.0.0.1:5500/campus%20calendar/calendar.html" class="footer-link">Academic Calendar</a></li>
+          <li><a href="#calendar" class="footer-link">Academic Calendar</a></li>
           <li><a href="#support" class="footer-link">Safety &amp; Support</a></li>
         </ul>
       </nav>
